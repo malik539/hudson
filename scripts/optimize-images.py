@@ -63,7 +63,7 @@ avatar.save(os.path.join(OUT, "dr-turturro-avatar-160.jpg"), "JPEG", quality=85,
 # --- Office exterior (approved "Hudson Valley - building" image), cropped to 3:2
 bld = Image.open(find("Hudson_Valley_building")).convert("RGB")
 bld = ImageOps.fit(bld, (1200, 800), Image.LANCZOS, centering=(0.5, 0.55))
-save_set(bld, "office", [480, 800, 1200], quality=78)
+save_set(bld, "office", [480, 800], quality=78)
 
 print("written to", OUT)
 for f in sorted(os.listdir(OUT)):
