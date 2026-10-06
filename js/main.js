@@ -32,6 +32,18 @@
     sticky.classList.add('is-visible');
   }
 
+  /* ---------- Reviews: reveal the extra cards ---------- */
+  var more = document.getElementById('moreReviews');
+  if (more) {
+    more.addEventListener('click', function () {
+      var hidden = document.querySelectorAll('.review--more');
+      var open = more.getAttribute('aria-expanded') === 'true';
+      for (var i = 0; i < hidden.length; i++) hidden[i].hidden = open;
+      more.setAttribute('aria-expanded', String(!open));
+      more.textContent = open ? 'Show 3 more reviews' : 'Show fewer reviews';
+    });
+  }
+
   /* ---------- Emergency appointment form ---------- */
   var form = document.getElementById('emergencyForm');
   if (!form) return;

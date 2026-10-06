@@ -18,13 +18,12 @@ that must be replaced with the exact source-page wording before launch.
 - Credentials: DDS, Columbia University College of Dental Medicine; General Practice Residency, Westchester Medical Center
 - CTA labels: Call Now · Call (914) 809-8561 · Get Emergency Care Today · Emergency Appointment · Get Directions
 - Form fields: First Name, Last Name, Phone, Email, Nature of Dental Emergency + consent
+- Google rating 4.9 / 220 reviews and six reviews (Laureen Treacy, Maribel Tapia, Rachele Siniscalchi, Mike Cartolano, Jeff Silver, Anitha) copied verbatim from the Google screenshots supplied by the client
 
 ## Must be replaced with source-page copy (search `[[` in index.html)
 
 | Location | Placeholder | What to paste |
 |----------|-------------|---------------|
-| Reviews badge | `[[4.9]]`, `[[###]]` | Actual Google rating and review count shown on the source page (or remove the badge) |
-| Review cards ×3 | `[[Approved review #n text]]`, `[[Reviewer name]]` | Three real reviews copied verbatim |
 | FAQ: knocked-out tooth | `[[Approved answer…]]` | Source answer (do not add medical guidance) |
 | FAQ: emergency extractions | `[[Approved answer…]]` | Source answer |
 | FAQ: insurance | `[[Approved insurance answer…]]` | Source answer |
