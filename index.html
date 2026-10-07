@@ -14,6 +14,7 @@
   <!-- Self-hosted brand font (Poppins) – preload only the weight used above the fold -->
   <link rel="preload" href="assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/dr-turturro-hero-480.webp" as="image" type="image/webp" media="(min-width: 960px)">
   <link rel="stylesheet" href="css/styles.css">
 
   <!-- ==========================================================================
@@ -100,12 +101,13 @@
           <p class="hero__lead">Severe tooth pain, a broken or knocked-out tooth, swelling, or a lost filling or crown can't wait. Dr. Francis Turturro and the Hudson Valley Dental Medicine team offer same-day emergency appointments. Call now or request an appointment and we'll get you in fast.</p>
 
           <div class="hero__cta">
-            <a class="btn btn--primary btn--lg" href="tel:9148098561" data-track="phone" data-location="hero">
+            <a class="btn btn--light btn--lg" href="tel:9148098561" data-track="phone" data-location="hero">
               <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call (914) 809-8561
             </a>
             <a class="btn btn--accent btn--lg" href="#emergency-form" data-track="cta">Get Emergency Care Today</a>
           </div>
 
+          <div class="hero__proof">
           <ul class="trust" aria-label="Why patients choose us">
             <li class="trust__item trust__item--doctor">
               <picture>
@@ -131,6 +133,14 @@
               <span><strong>New Patients Welcome</strong><small>No referral needed</small></span>
             </li>
           </ul>
+          <figure class="hero__portrait">
+            <picture>
+              <source type="image/webp" srcset="assets/img/dr-turturro-hero-240.webp 240w, assets/img/dr-turturro-hero-480.webp 480w" sizes="220px">
+              <img src="assets/img/dr-turturro-hero-240.jpg" srcset="assets/img/dr-turturro-hero-240.jpg 240w, assets/img/dr-turturro-hero-480.jpg 480w" sizes="220px" width="240" height="300" alt="Dr. Francis Turturro, DDS, smiling in the treatment room at Hudson Valley Dental Medicine" loading="eager" decoding="async">
+            </picture>
+            <figcaption><strong>Dr. Francis Turturro, DDS</strong><span>Hudson Valley Dental Medicine</span></figcaption>
+          </figure>
+          </div>
         </div>
 
         <!-- Emergency appointment form card -->
