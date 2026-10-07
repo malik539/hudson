@@ -47,7 +47,7 @@
   /* ---------- "Tooth pain? Watch this" video: load on demand ---------- */
   var playBtn = document.getElementById('videoPlay');
   var videoEl = document.getElementById('videoEl');
-  var strip = document.getElementById('videoStrip');
+  var strip = document.getElementById('videoBox');
   if (playBtn && videoEl && strip) {
     playBtn.addEventListener('click', function () {
       strip.classList.add('is-playing');

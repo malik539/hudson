@@ -14,9 +14,8 @@
   <!-- Self-hosted brand font (Poppins) – preload only the weights used above the fold -->
   <link rel="preload" href="assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/img/team-hero-540.webp" as="image" type="image/webp" media="(max-width: 959px)">
-  <link rel="preload" href="assets/img/team-hero-1080.webp" as="image" type="image/webp" media="(min-width: 960px)">
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="preload" href="assets/img/video-poster-540.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="css/styles.css?v=5">
 
   <!-- ==========================================================================
        TRACKING (slot) – no tracking code existed in this repository.
@@ -120,19 +119,26 @@
           </p>
         </div>
 
-        <figure class="hero__media">
-          <picture>
-            <source type="image/webp" srcset="assets/img/team-hero-540.webp 540w, assets/img/team-hero-1080.webp 1080w" sizes="(min-width: 960px) 460px, 100vw">
-            <img src="assets/img/team-hero-540.jpg" srcset="assets/img/team-hero-540.jpg 540w, assets/img/team-hero-1080.jpg 1080w" sizes="(min-width: 960px) 460px, 100vw" width="1080" height="1350" alt="Dr. Francis Turturro, DDS, and a team member smiling in a treatment room at Hudson Valley Dental Medicine" fetchpriority="high" decoding="async">
-          </picture>
-          <figcaption>
+        <div class="hero__video" id="videoBox">
+          <button class="hero__video-play" type="button" id="videoPlay" aria-label="Play video: Tooth pain? Watch this">
+            <picture>
+              <source srcset="assets/img/video-poster-540.webp" type="image/webp">
+              <img src="assets/img/video-poster-540.jpg" width="540" height="960" alt="Dr. Francis Turturro, DDS, in a treatment room at Hudson Valley Dental Medicine" fetchpriority="high" decoding="async">
+            </picture>
+            <span class="hero__video-label">Tooth pain? Watch this</span>
+            <span class="hero__video-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></span>
+          </button>
+          <video class="hero__video-el" id="videoEl" playsinline controls preload="none" poster="assets/img/video-poster-540.jpg" width="540" height="960" hidden>
+            <source src="assets/video/tooth-pain-540.mp4" type="video/mp4">
+          </video>
+          <p class="hero__video-caption">
             <picture>
               <source srcset="assets/img/dr-turturro-avatar-160.webp" type="image/webp">
-              <img src="assets/img/dr-turturro-avatar-160.jpg" width="44" height="44" alt="" loading="lazy" decoding="async">
+              <img src="assets/img/dr-turturro-avatar-160.jpg" width="36" height="36" alt="" loading="lazy" decoding="async">
             </picture>
             <span><strong>Dr. Francis Turturro, DDS</strong>Hudson Valley Dental Medicine · Cortlandt Manor</span>
-          </figcaption>
-        </figure>
+          </p>
+        </div>
       </div>
 
       <ul class="container badges" aria-label="Why patients choose us">
@@ -294,23 +300,6 @@
           </div>
         </div>
 
-        <!-- Approved video ("Tooth pain? Watch this") – loads only when played -->
-        <div class="video-strip" id="videoStrip">
-          <button class="video-strip__play" type="button" id="videoPlay" aria-label="Play video: Tooth pain? Watch this">
-            <picture>
-              <source srcset="assets/img/video-poster-540.webp" type="image/webp">
-              <img src="assets/img/video-poster-540.jpg" width="540" height="960" alt="" loading="lazy" decoding="async">
-            </picture>
-            <span class="video-strip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></span>
-          </button>
-          <div class="video-strip__text">
-            <h3>Tooth pain? Watch this</h3>
-            <p>A quick word from Dr. Turturro.</p>
-          </div>
-          <video class="video-strip__video" id="videoEl" playsinline controls preload="none" poster="assets/img/video-poster-540.jpg" width="540" height="960" hidden>
-            <source src="assets/video/tooth-pain-540.mp4" type="video/mp4">
-          </video>
-        </div>
       </div>
     </section>
 
@@ -468,6 +457,6 @@
     <symbol id="i-google" viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 14a6 6 0 0 1 0-3.9V7.5H3.1a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6 12 6z"/></symbol>
   </svg>
 
-  <script src="js/main.js?v=4" defer></script>
+  <script src="js/main.js?v=5" defer></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ build environment's network policy, so the copy was taken from the text the clie
 - Form: field labels, "Skip the Form – Call Now", consent sentence with the privacy-policy link, button label
 - "What Happens Next" heading, subline and the three steps
 - Doctor: "meet your doctor", bio paragraph, three credential bullets
-- Video block label "Tooth pain? Watch this" (clip: `HVDM_toothpain.mp4` from the client's Drive, re-encoded to 540p)
+- Hero video label "Tooth pain? Watch this" (clip: `HVDM_toothpain.mp4` from the client's Drive, re-encoded to 540p)
 - Reviews heading "What Hudson Valley Dental Medicine families are saying"; six reviews copied verbatim from the
   Google screenshots the client supplied (Laureen Treacy, Maribel Tapia, Rachele Siniscalchi, Mike Cartolano, Jeff Silver, Anitha)
 - FAQ question wording (6 questions)
@@ -29,7 +29,6 @@ build environment's network policy, so the copy was taken from the text the clie
 | Hero trust line, reviews kicker and badge | **4.9 · 220 Google Reviews** | Source page says "5.0 · 200+". The client's own Google screenshots show 4.9 and 220, so the verified current figures are used to keep ad claims accurate. Change to the source wording if preferred. |
 | Hero badge | "200+ Google Reviews" | Source badge reads "200+ 5-Star Reviews"; the number of 5-star reviews could not be verified, so the badge states the review count only. |
 | Reviews shown | The six reviews the client supplied | The source page lists six different, shorter reviews (Laurel Maul, Susan Wylock, Henry Schrot, Sarah Licciardello, janet heller, Trish Zez). Either set is approved; swap if the source set is preferred. |
-| Video subtitle | "A quick word from Dr. Turturro." | Small connector line under the approved label; delete if unwanted. |
 | Form section kicker/heading | "Emergency appointment" / "Get Emergency Care Today" | The source page has no heading above the form; the approved CTA text is reused as the heading. |
 | Final heading | "Ready for your free consultation?" | Approved copy, but note it is a consultation offer on an emergency page; keep or swap for emergency wording at the client's discretion. |
 | Form thank-you message | "Thanks, {name}. We received your request and will call you back as soon as possible…" | Drafted; the source confirmation text was not provided. |

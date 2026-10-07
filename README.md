@@ -20,11 +20,11 @@ CONTENT-CHECKLIST.md  every string that must be verified against the source page
 | # | Section | Conversion purpose |
 |---|---------|--------------------|
 | 0 | Status bar + compact header | Same-day messaging, phone, Call Now / Get Emergency Care Today |
-| 1 | Hero (copy left, team photo right) + trust badges | Answer "can you help, how fast, who, where" and drive the call |
+| 1 | Hero (copy left, "Tooth pain? Watch this" video right) + trust badges | Answer "can you help, how fast, who, where" and drive the call |
 | 2 | Common dental emergencies we treat | Confirm the visitor's problem is covered; urgency call CTA |
 | 3 | Emergency appointment form (`#emergency-form`) | Capture the lead; "Skip the Form – Call Now", hours, after-hours note |
 | 4 | What Happens Next (3 steps) | Reduce anxiety; form CTA |
-| 5 | Meet your doctor + "Tooth pain? Watch this" video | Trust; call + form CTAs |
+| 5 | Meet your doctor + credentials | Trust; call + form CTAs |
 | 6 | Reviews + FAQ accordion | Social proof and objection handling in one compact block |
 | 7 | Final CTA + address, hours, map, directions, after-hours | Make calling or navigating effortless |
 | – | Mobile sticky bar (Call Now / Emergency Appointment) | Always-available conversion on phones |
