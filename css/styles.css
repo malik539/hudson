@@ -284,7 +284,7 @@ button { font: inherit; }
   .urgency-card__cta { flex-direction: row; }
   .final__cta { flex-direction: row; flex-wrap: wrap; }
   .final__details { grid-template-columns: 1fr 1fr; }
-  .review { flex-basis: 340px; }
+  .review { flex-basis: 380px; }
 }
 
 /* ---------- Desktop ---------- */
