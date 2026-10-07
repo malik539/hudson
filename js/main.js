@@ -32,16 +32,20 @@
     sticky.classList.add('is-visible');
   }
 
-  /* ---------- Reviews: reveal the extra cards ---------- */
-  var more = document.getElementById('moreReviews');
-  if (more) {
-    more.addEventListener('click', function () {
-      var hidden = document.querySelectorAll('.review--more');
-      var open = more.getAttribute('aria-expanded') === 'true';
-      for (var i = 0; i < hidden.length; i++) hidden[i].hidden = open;
-      more.setAttribute('aria-expanded', String(!open));
-      more.textContent = open ? 'Show 3 more reviews' : 'Show fewer reviews';
+  /* ---------- Reviews ticker: duplicate the track for a seamless loop, speed ~30px/s ---------- */
+  var ticker = document.getElementById('reviewTicker');
+  var tickerTrack = ticker && ticker.querySelector('.ticker__track');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (tickerTrack && !reduceMotion) {
+    var cards = Array.prototype.slice.call(tickerTrack.children);
+    cards.forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      tickerTrack.appendChild(clone);
     });
+    var half = tickerTrack.scrollWidth / 2;
+    ticker.style.setProperty('--ticker-duration', Math.max(40, Math.round(half / 30)) + 's');
+    ticker.classList.add('is-ready');
   }
 
   /* ---------- "Tooth pain? Watch this" video: load on demand ---------- */

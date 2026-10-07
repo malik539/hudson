@@ -15,7 +15,7 @@
   <link rel="preload" href="assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/img/video-poster-540.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="css/styles.css?v=5">
+  <link rel="stylesheet" href="css/styles.css?v=6">
 
   <!-- ==========================================================================
        TRACKING (slot) – no tracking code existed in this repository.
@@ -317,8 +317,9 @@
           </a>
         </div>
 
-        <!-- Real Google reviews supplied by the client (verbatim). Three shown, three behind "Show more". -->
-        <ul class="reviews" id="reviews">
+        <!-- Real Google reviews supplied by the client (verbatim), shown as a slow continuous ticker. -->
+        <div class="ticker" id="reviewTicker" aria-label="Google reviews from patients">
+        <ul class="reviews ticker__track" id="reviews">
           <li class="review">
             <div class="review__stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p>“Dr. Turturro and his whole staff are the best! They couldn't be any friendlier. They try their best to make my time there not only as painless as possible, but also enjoyable. I have had a few different procedures, and all of them have gone without a hitch. Dr. Turturro seems to take pains to make sure the procedures go well, and tells me what he's doing as he goes. Thank you!”</p>
@@ -334,23 +335,23 @@
             <p>“Great dental care. Hygienist does a very thorough cleaning. Dr. T does great work when needed and doesn't push unnecessary services”</p>
             <footer><strong>Rachele Siniscalchi</strong><span>Google review</span></footer>
           </li>
-          <li class="review review--more" hidden>
+          <li class="review">
             <div class="review__stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p>“The entire experience of Hudson Valley Dental Medicine is stellar. The front desk with Sarah is the first indication that you are dealing with real, caring people. Sarah is knowledgable and personable nd always accommodating. Fabiana is an excellent hygienist and also very friendly. Dr. Turturro is a quieting yet commanding presence. He knows what you need and completes his work in a comfortable manner. Adrianna, Dr. Turturro's dental assistant, is also a competent presence and very engaging in her pleasant demeanor. All in all Hudson Valley Dental Medicine has what you need, want in a dentist's office!”</p>
             <footer><strong>Mike Cartolano</strong><span>Google review</span></footer>
           </li>
-          <li class="review review--more" hidden>
+          <li class="review">
             <div class="review__stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p>“Always a great visit to Hudson Valley Dental Fabianna a great hygienist with great suggestions. Dr Tuturro is a great Dentist calm and relaxing demeanor and transparent Assistant Adriana is helpful and pleasant. And Sarah is great receptionist. makes going to dentist less painful. Highly recommended”</p>
             <footer><strong>Jeff Silver</strong><span>Google review</span></footer>
           </li>
-          <li class="review review--more" hidden>
+          <li class="review">
             <div class="review__stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p>“We had such a great experience with Dr Turturro and our hygienist Fabiana. They were both professional, gentle, and made me and my 2 girl's feel completely at ease. The entire staff was incredibly friendly and welcoming from start to finish. I wish I remembered the name of the woman who took our X-rays-she was so kind and sweet and really made the experience stress-free. Changing our provider and bringing our whole family here was absolutely the right decision. We couldn't be happier!”</p>
             <footer><strong>Anitha</strong><span>Google review</span></footer>
           </li>
         </ul>
-        <p class="reviews__more"><button class="btn btn--ghost btn--sm" type="button" id="moreReviews" aria-expanded="false" aria-controls="reviews">Show 3 more reviews</button></p>
+        </div>
 
         <div class="faq" aria-labelledby="faq-title">
           <p class="kicker">Questions</p>
@@ -457,6 +458,6 @@
     <symbol id="i-google" viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 14a6 6 0 0 1 0-3.9V7.5H3.1a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6 12 6z"/></symbol>
   </svg>
 
-  <script src="js/main.js?v=5" defer></script>
+  <script src="js/main.js?v=6" defer></script>
 </body>
 </html>
