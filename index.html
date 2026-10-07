@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Emergency Dentist in Cortlandt Manor, NY | Hudson Valley Dental Medicine</title>
-  <meta name="description" content="Same-day emergency dental care in Cortlandt Manor, NY with Dr. Francis Turturro, DDS. Tooth pain, broken teeth, swelling or a knocked-out tooth? Call (914) 809-8561.">
+  <meta name="description" content="In dental pain? We'll see you today. Toothaches, broken teeth and dental injuries treated fast by Dr. Turturro's team in Cortlandt Manor, NY. Call (914) 809-8561.">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#007dc3">
+  <meta name="theme-color" content="#052b47">
   <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="canonical" href="https://smilehub.hudsonvalleydentalmedicine.com/emergency-treatment">
 
-  <!-- Self-hosted brand font (Poppins) – preload only the weight used above the fold -->
+  <!-- Self-hosted brand font (Poppins) – preload only the weights used above the fold -->
   <link rel="preload" href="assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/img/dr-turturro-hero-480.webp" as="image" type="image/webp" media="(min-width: 960px)">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preload" href="assets/img/team-hero-540.webp" as="image" type="image/webp" media="(max-width: 959px)">
+  <link rel="preload" href="assets/img/team-hero-1080.webp" as="image" type="image/webp" media="(min-width: 960px)">
+  <link rel="stylesheet" href="css/styles.css?v=4">
 
   <!-- ==========================================================================
        TRACKING (slot) – no tracking code existed in this repository.
@@ -26,6 +27,7 @@
          form_start    { form_id }         – first interaction with the form
          form_submit   { form_id }         – successful submission
          cta_click     { cta_text }        – appointment CTAs
+         video_play    {}                  – "Tooth pain? Watch this"
        ========================================================================== -->
   <script>window.dataLayer = window.dataLayer || [];</script>
   <!--
@@ -68,7 +70,7 @@
   <div class="status-bar" role="status">
     <div class="container status-bar__inner">
       <span class="status-bar__dot" aria-hidden="true"></span>
-      <span><strong>Same-day emergency appointments available.</strong> In pain? Call <a href="tel:9148098561" data-track="phone" data-location="status-bar">(914) 809-8561</a></span>
+      <span><strong>Same-Day Appointments Available.</strong> In pain? Call <a href="tel:9148098561" data-track="phone" data-location="status-bar">(914) 809-8561</a></span>
     </div>
   </div>
 
@@ -92,13 +94,13 @@
   </header>
 
   <main id="top">
-    <!-- ===================== 1. HERO + EMERGENCY FORM ===================== -->
+    <!-- ===================== 1. HERO ===================== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow"><span class="eyebrow__pulse" aria-hidden="true"></span>Emergency Dental Treatment · Cortlandt Manor, NY</p>
-          <h1 id="hero-title">Dental Emergency? <span class="text-blue">Get Seen Today.</span></h1>
-          <p class="hero__lead">Severe tooth pain, a broken or knocked-out tooth, swelling, or a lost filling or crown can't wait. Dr. Francis Turturro and the Hudson Valley Dental Medicine team offer same-day emergency appointments. Call now or request an appointment and we'll get you in fast.</p>
+          <p class="eyebrow"><span class="eyebrow__pulse" aria-hidden="true"></span>Same-Day Appointments Available</p>
+          <h1 id="hero-title">In Dental pain? <span class="text-accent">We'll see you today.</span></h1>
+          <p class="hero__lead">Toothaches, broken teeth, and dental injuries treated fast by Dr. Turturro's team, right here in Cortlandt Manor. Call now for emergency care.</p>
 
           <div class="hero__cta">
             <a class="btn btn--light btn--lg" href="tel:9148098561" data-track="phone" data-location="hero">
@@ -107,142 +109,159 @@
             <a class="btn btn--accent btn--lg" href="#emergency-form" data-track="cta">Get Emergency Care Today</a>
           </div>
 
-          <div class="hero__proof">
-          <ul class="trust" aria-label="Why patients choose us">
-            <li class="trust__item trust__item--doctor">
-              <picture>
-                <source srcset="assets/img/dr-turturro-avatar-160.webp" type="image/webp">
-                <img src="assets/img/dr-turturro-avatar-160.jpg" width="40" height="40" alt="Dr. Francis Turturro, DDS" loading="eager" decoding="async">
-              </picture>
-              <span><strong>Dr. Francis Turturro, DDS</strong><small>Columbia-trained · Local dentist</small></span>
-            </li>
-            <li class="trust__item">
-              <svg class="icon icon--g" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-google"/></svg>
-              <span><strong>4.9 <span class="stars" aria-hidden="true">★★★★★</span> on Google</strong><small>220 patient reviews</small></span>
-            </li>
-            <li class="trust__item">
-              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-bolt"/></svg>
-              <span><strong>Same-Day Appointments</strong><small>For dental emergencies</small></span>
-            </li>
-            <li class="trust__item">
-              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-xray"/></svg>
-              <span><strong>Digital X-Rays</strong><small>Fast, accurate diagnosis</small></span>
-            </li>
-            <li class="trust__item">
-              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-smile"/></svg>
-              <span><strong>New Patients Welcome</strong><small>No referral needed</small></span>
-            </li>
-          </ul>
-          <figure class="hero__portrait">
-            <picture>
-              <source type="image/webp" srcset="assets/img/dr-turturro-hero-240.webp 240w, assets/img/dr-turturro-hero-480.webp 480w" sizes="220px">
-              <img src="assets/img/dr-turturro-hero-240.jpg" srcset="assets/img/dr-turturro-hero-240.jpg 240w, assets/img/dr-turturro-hero-480.jpg 480w" sizes="220px" width="240" height="300" alt="Dr. Francis Turturro, DDS, smiling in the treatment room at Hudson Valley Dental Medicine" loading="eager" decoding="async">
-            </picture>
-            <figcaption><strong>Dr. Francis Turturro, DDS</strong><span>Hudson Valley Dental Medicine</span></figcaption>
-          </figure>
-          </div>
+          <p class="hero__trustline">
+            <span><span class="stars" aria-hidden="true">★★★★★</span> <strong>4.9</strong> · 220 Google Reviews</span>
+            <span class="hero__sep" aria-hidden="true">|</span>
+            <span><strong>Dr. Francis Turturro</strong> · Columbia DDS · 12+ yrs local</span>
+          </p>
+          <p class="hero__address">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-pin"/></svg>
+            <a href="https://www.google.com/maps/place/Hudson+Valley+Dental+Medicine/@41.2931421,-73.9005739,15z/data=!4m15!1m8!3m7!1s0x89c2c8fdd293630d:0xb6c736b6917f3197!2s1983+Crompond+Rd+%23202,+Cortlandt+Manor,+NY+10567!3b1!8m2!3d41.2908855!4d-73.8954674!16s%2Fg%2F11n09br_s7!3m5!1s0x89c2c8fddb8f38bb:0xedd92132710c267a!8m2!3d41.2908328!4d-73.8955053!16s%2Fg%2F1tfr1c0s" target="_blank" rel="noopener">1983 Crompond Rd #202, Cortlandt Manor, NY 10567</a>
+          </p>
         </div>
 
-        <!-- Emergency appointment form card -->
-        <div class="form-card" id="emergency-form">
-          <div class="form-card__head">
-            <h2>Request an Emergency Appointment</h2>
-            <p>Tell us what's happening and we'll call you back to get you in as soon as possible. <span class="nowrap">Faster? Call <a href="tel:9148098561" data-track="phone" data-location="form-card">(914) 809-8561</a>.</span></p>
-          </div>
+        <figure class="hero__media">
+          <picture>
+            <source type="image/webp" srcset="assets/img/team-hero-540.webp 540w, assets/img/team-hero-1080.webp 1080w" sizes="(min-width: 960px) 460px, 100vw">
+            <img src="assets/img/team-hero-540.jpg" srcset="assets/img/team-hero-540.jpg 540w, assets/img/team-hero-1080.jpg 1080w" sizes="(min-width: 960px) 460px, 100vw" width="1080" height="1350" alt="Dr. Francis Turturro, DDS, and a team member smiling in a treatment room at Hudson Valley Dental Medicine" fetchpriority="high" decoding="async">
+          </picture>
+          <figcaption>
+            <picture>
+              <source srcset="assets/img/dr-turturro-avatar-160.webp" type="image/webp">
+              <img src="assets/img/dr-turturro-avatar-160.jpg" width="44" height="44" alt="" loading="lazy" decoding="async">
+            </picture>
+            <span><strong>Dr. Francis Turturro, DDS</strong>Hudson Valley Dental Medicine · Cortlandt Manor</span>
+          </figcaption>
+        </figure>
+      </div>
 
-          <!-- INTEGRATION: set data-endpoint to the practice's LeadConnector / GHL inbound
-               webhook (or any POST endpoint). See README.md. Fields intentionally match the
-               existing form: First Name, Last Name, Phone, Email, Nature of Dental Emergency. -->
+      <ul class="container badges" aria-label="Why patients choose us">
+        <li><svg class="icon icon--g" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-google"/></svg>200+ Google Reviews</li>
+        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-smile"/></svg>New Patients Welcome</li>
+        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-bolt"/></svg>Same-Day Appointments</li>
+        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-xray"/></svg>On-Site Digital X-Rays</li>
+      </ul>
+    </section>
+
+    <!-- ===================== 2. WHAT WE TREAT ===================== -->
+    <section class="section" aria-labelledby="treat-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="kicker">What we treat</p>
+          <h2 id="treat-title">Common dental emergencies we treat</h2>
+          <p>Contact Hudson Valley Dental Medicine right away if you're experiencing any of the following.</p>
+        </div>
+        <ul class="treat-grid">
+          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Severe toothache or persistent dental pain</li>
+          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Broken, cracked, or chipped tooth</li>
+          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Knocked-out (avulsed) tooth</li>
+          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Lost filling or dental crown</li>
+          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Swollen gums or facial swelling</li>
+          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Tooth sensitivity caused by injury</li>
+          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Jaw pain related to dental issues</li>
+          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Any dental issue causing significant pain or discomfort</li>
+        </ul>
+        <div class="urgency-card">
+          <div>
+            <h3>In pain right now? Don't wait.</h3>
+            <p>Call our Cortlandt office for the next available emergency appointment.</p>
+          </div>
+          <div class="urgency-card__cta">
+            <a class="btn btn--primary" href="tel:9148098561" data-track="phone" data-location="treat"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call (914) 809-8561</a>
+            <a class="btn btn--ghost" href="#emergency-form" data-track="cta">Get Emergency Care Today</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 3. EMERGENCY APPOINTMENT FORM ===================== -->
+    <section class="section section--tint form-section" id="emergency-form" aria-labelledby="form-title">
+      <div class="container form-section__grid">
+        <div class="form-section__copy">
+          <p class="kicker">Emergency appointment</p>
+          <h2 id="form-title">Get Emergency Care Today</h2>
+          <p class="form-section__skip">Skip the Form – <a href="tel:9148098561" data-track="phone" data-location="form-skip">Call Now</a></p>
+          <a class="btn btn--primary btn--lg" href="tel:9148098561" data-track="phone" data-location="form-section"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call (914) 809-8561</a>
+          <dl class="mini-hours">
+            <div><dt>Mon · Tue · Thu</dt><dd>8:30 AM – 5:30 PM</dd></div>
+            <div><dt>Friday</dt><dd>8:30 AM – 2:30 PM</dd></div>
+            <div><dt>Saturday</dt><dd>8:30 AM – 1:00 PM</dd></div>
+            <div><dt>Wed · Sun</dt><dd>Closed</dd></div>
+          </dl>
+          <p class="form-section__afterhours">Emergency after hours? Call <a href="tel:9148098561" data-track="phone" data-location="form-afterhours">(914) 809-8561</a> and leave a message. We prioritize emergency callbacks the moment we reopen.</p>
+        </div>
+
+        <!-- INTEGRATION: set data-endpoint to the practice's LeadConnector / GHL inbound
+             webhook (or any POST endpoint). See README.md. Fields match the existing form:
+             First Name, Last Name, Phone Number, Email, Nature of Dental Emergency. -->
+        <div class="form-card">
           <form class="form" id="emergencyForm" method="post" action="#" data-endpoint="" novalidate>
             <div class="form__row">
               <div class="field">
-                <label for="first_name">First Name</label>
+                <label for="first_name">First Name <span class="req" aria-hidden="true">*</span></label>
                 <input id="first_name" name="first_name" type="text" autocomplete="given-name" required>
               </div>
               <div class="field">
-                <label for="last_name">Last Name</label>
+                <label for="last_name">Last Name <span class="req" aria-hidden="true">*</span></label>
                 <input id="last_name" name="last_name" type="text" autocomplete="family-name" required>
               </div>
             </div>
             <div class="field">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Your phone number" required>
+              <label for="phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
             </div>
             <div class="field">
-              <label for="email">Email</label>
+              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
               <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required>
             </div>
             <div class="field">
-              <label for="emergency">Nature of Dental Emergency</label>
+              <label for="emergency">Nature of Dental Emergency <span class="req" aria-hidden="true">*</span></label>
               <select id="emergency" name="nature_of_emergency" required>
                 <option value="" selected disabled>Select the closest match</option>
-                <option>Severe tooth pain</option>
-                <option>Broken, cracked or chipped tooth</option>
-                <option>Knocked-out tooth</option>
-                <option>Lost filling or crown</option>
-                <option>Swelling</option>
-                <option>Injury-related sensitivity</option>
-                <option>Dental-related jaw pain</option>
-                <option>Significant dental discomfort</option>
-                <option>Something else</option>
+                <option>Severe toothache or persistent dental pain</option>
+                <option>Broken, cracked, or chipped tooth</option>
+                <option>Knocked-out (avulsed) tooth</option>
+                <option>Lost filling or dental crown</option>
+                <option>Swollen gums or facial swelling</option>
+                <option>Tooth sensitivity caused by injury</option>
+                <option>Jaw pain related to dental issues</option>
+                <option>Any dental issue causing significant pain or discomfort</option>
               </select>
             </div>
             <div class="field field--check">
               <input id="consent" name="consent" type="checkbox" value="yes" required>
-              <label for="consent">I agree to be contacted by Hudson Valley Dental Medicine by phone, text message or email about my request. Message and data rates may apply. Reply STOP to opt out.</label>
+              <label for="consent">I agree to <a href="https://hudsonvalleydentalmedicine.com/privacy-policy/" target="_blank" rel="noopener">terms &amp; conditions</a> provided by the company. By providing my number I agree to receive texts from Hudson Valley Dental Medicine about my appointment.</label>
             </div>
             <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button class="btn btn--accent btn--lg btn--block" type="submit">Get Emergency Care Today</button>
-            <p class="form__note">We'll call you back during office hours. For urgent help right now, call <a href="tel:9148098561" data-track="phone" data-location="form-note">(914) 809-8561</a>.</p>
             <p class="form__status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
     </section>
 
-    <!-- ===================== 2. WHAT WE TREAT ===================== -->
-    <section class="section section--tint" aria-labelledby="treat-title">
-      <div class="container">
-        <div class="section__head">
-          <h2 id="treat-title">Common Dental Emergencies We Treat</h2>
-          <p>If it hurts, is broken, or is swelling, don't wait it out. We see emergencies the same day.</p>
-        </div>
-        <ul class="treat-grid">
-          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Severe tooth pain</li>
-          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Broken, cracked or chipped teeth</li>
-          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Knocked-out teeth</li>
-          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Lost filling or crown</li>
-          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Swelling</li>
-          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Injury-related sensitivity</li>
-          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Dental-related jaw pain</li>
-          <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-check"/></svg>Significant dental discomfort</li>
-        </ul>
-        <p class="urgency">In pain right now? <a class="btn btn--primary" href="tel:9148098561" data-track="phone" data-location="treat"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call (914) 809-8561</a></p>
-      </div>
-    </section>
-
-    <!-- ===================== 3. WHAT HAPPENS NEXT ===================== -->
+    <!-- ===================== 4. WHAT HAPPENS NEXT ===================== -->
     <section class="section" aria-labelledby="steps-title">
       <div class="container">
         <div class="section__head">
           <h2 id="steps-title">What Happens Next</h2>
-          <p>Three simple steps from first call to feeling better.</p>
+          <p>From "it hurts" to pain-free, in one visit</p>
         </div>
         <ol class="steps">
           <li class="step">
             <span class="step__num">01</span>
-            <h3>Reach Out</h3>
-            <p>Call <a href="tel:9148098561" data-track="phone" data-location="steps">(914) 809-8561</a> or send the form. Tell us what's going on and we'll find the soonest time to see you.</p>
+            <h3>Reach out</h3>
+            <p>Call or submit the short form above and tell us what's going on. No lengthy intake, just the essentials.</p>
           </li>
           <li class="step">
             <span class="step__num">02</span>
-            <h3>Get Seen Fast</h3>
-            <p>Come in for your same-day emergency visit. Dr. Turturro will examine the area, take digital X-rays if needed, and focus on relieving your pain.</p>
+            <h3>Get seen fast</h3>
+            <p>We hold same-day slots for real emergencies. Most callers are offered an appointment the same day.</p>
           </li>
           <li class="step">
             <span class="step__num">03</span>
-            <h3>Leave With a Plan</h3>
-            <p>You'll leave knowing exactly what's wrong, what it takes to fix it, and your next steps, with your insurance and payment questions answered.</p>
+            <h3>Leave with a plan</h3>
+            <p>Digital X-rays, a clear diagnosis, and pain relief before you leave, plus a plan for anything else needed.</p>
           </li>
         </ol>
         <div class="center">
@@ -251,7 +270,7 @@
       </div>
     </section>
 
-    <!-- ===================== 4. MEET DR. TURTURRO + TRUST ===================== -->
+    <!-- ===================== 5. MEET YOUR DOCTOR + VIDEO ===================== -->
     <section class="section section--tint" aria-labelledby="doctor-title">
       <div class="container doctor">
         <figure class="doctor__photo">
@@ -261,29 +280,47 @@
           </picture>
         </figure>
         <div class="doctor__body">
-          <p class="eyebrow">Who Will Treat You</p>
-          <h2 id="doctor-title">Meet Dr. Francis Turturro, DDS</h2>
-          <p>Dr. Turturro earned his Doctor of Dental Surgery degree from Columbia University College of Dental Medicine and completed a General Practice Residency at Westchester Medical Center. He has cared for patients in Cortlandt Manor and the surrounding Hudson Valley communities for years, and he treats every emergency with the same calm, thorough approach, whether it's a toothache or a knocked-out tooth.</p>
+          <p class="kicker">Meet your doctor</p>
+          <h2 id="doctor-title">Dr. Francis Turturro</h2>
+          <p>A Westchester County native, Dr. Turturro earned his Doctor of Dental Surgery from Columbia University in 2007 and completed a General Practice Residency at Westchester Medical Center in 2009.</p>
           <ul class="creds">
-            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-grad"/></svg><span><strong>DDS</strong>Columbia University College of Dental Medicine</span></li>
-            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-hospital"/></svg><span><strong>General Practice Residency</strong>Westchester Medical Center</span></li>
-            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-pin"/></svg><span><strong>Local to You</strong>Cortlandt Manor, NY · Serving the Hudson Valley</span></li>
+            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-grad"/></svg><span>Columbia University College of Dental Medicine, DDS 2007</span></li>
+            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-hospital"/></svg><span>General Practice Residency, Westchester Medical Center</span></li>
+            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-pin"/></svg><span>12+ years serving Bronxville &amp; Yorktown families</span></li>
           </ul>
           <div class="doctor__cta">
-            <a class="btn btn--primary" href="tel:9148098561" data-track="phone" data-location="doctor"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call (914) 809-8561</a>
-            <a class="btn btn--ghost" href="#emergency-form" data-track="cta">Get Emergency Care Today</a>
+            <a class="btn btn--accent" href="#emergency-form" data-track="cta">Get Emergency Care Today</a>
+            <a class="btn btn--ghost" href="tel:9148098561" data-track="phone" data-location="doctor"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call (914) 809-8561</a>
           </div>
+        </div>
+
+        <!-- Approved video ("Tooth pain? Watch this") – loads only when played -->
+        <div class="video-strip" id="videoStrip">
+          <button class="video-strip__play" type="button" id="videoPlay" aria-label="Play video: Tooth pain? Watch this">
+            <picture>
+              <source srcset="assets/img/video-poster-540.webp" type="image/webp">
+              <img src="assets/img/video-poster-540.jpg" width="540" height="960" alt="" loading="lazy" decoding="async">
+            </picture>
+            <span class="video-strip__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></span>
+          </button>
+          <div class="video-strip__text">
+            <h3>Tooth pain? Watch this</h3>
+            <p>A quick word from Dr. Turturro.</p>
+          </div>
+          <video class="video-strip__video" id="videoEl" playsinline controls preload="none" poster="assets/img/video-poster-540.jpg" width="540" height="960" hidden>
+            <source src="assets/video/tooth-pain-540.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </section>
 
-    <!-- ===================== 5. REVIEWS + FAQ ===================== -->
+    <!-- ===================== 6. REVIEWS + FAQ ===================== -->
     <section class="section" aria-labelledby="reviews-title">
       <div class="container">
         <div class="section__head section__head--row">
           <div>
-            <h2 id="reviews-title">What Patients Say</h2>
-            <p>Real reviews from Hudson Valley Dental Medicine patients on Google.</p>
+            <p class="kicker"><span class="stars" aria-hidden="true">★★★★★</span> 4.9 • 220 Google Reviews</p>
+            <h2 id="reviews-title">What Hudson Valley Dental Medicine families are saying</h2>
           </div>
           <a class="google-badge" href="https://www.google.com/maps/place/Hudson+Valley+Dental+Medicine/@41.2931421,-73.9005739,15z/data=!4m15!1m8!3m7!1s0x89c2c8fdd293630d:0xb6c736b6917f3197!2s1983+Crompond+Rd+%23202,+Cortlandt+Manor,+NY+10567!3b1!8m2!3d41.2908855!4d-73.8954674!16s%2Fg%2F11n09br_s7!3m5!1s0x89c2c8fddb8f38bb:0xedd92132710c267a!8m2!3d41.2908328!4d-73.8955053!16s%2Fg%2F1tfr1c0s" target="_blank" rel="noopener">
             <svg class="icon icon--g" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-google"/></svg>
@@ -327,14 +364,15 @@
         <p class="reviews__more"><button class="btn btn--ghost btn--sm" type="button" id="moreReviews" aria-expanded="false" aria-controls="reviews">Show 3 more reviews</button></p>
 
         <div class="faq" aria-labelledby="faq-title">
-          <h2 id="faq-title" class="faq__title">Emergency Dental FAQs</h2>
-          <!-- CONTENT: questions/answers must match the approved source page copy. -->
+          <p class="kicker">Questions</p>
+          <h2 id="faq-title" class="faq__title">FAQs</h2>
+          <!-- CONTENT: questions match the source page; answers marked [[…]] still need the source wording. -->
           <details class="faq__item" open>
             <summary>What qualifies as a dental emergency?</summary>
-            <div class="faq__body"><p>Severe tooth pain, a broken, cracked or chipped tooth, a knocked-out tooth, a lost filling or crown, swelling, injury-related sensitivity, dental-related jaw pain, or any significant dental discomfort. If you're not sure, call <a href="tel:9148098561" data-track="phone" data-location="faq">(914) 809-8561</a> and we'll help you decide.</p></div>
+            <div class="faq__body"><p>Severe toothache or persistent dental pain, a broken, cracked, or chipped tooth, a knocked-out tooth, a lost filling or dental crown, swollen gums or facial swelling, tooth sensitivity caused by injury, jaw pain related to dental issues, or any dental issue causing significant pain or discomfort. If you're not sure, call <a href="tel:9148098561" data-track="phone" data-location="faq">(914) 809-8561</a> and we'll help you decide.</p></div>
           </details>
           <details class="faq__item">
-            <summary>What should I do if a tooth is knocked out?</summary>
+            <summary>What should I do if I knock out a tooth?</summary>
             <div class="faq__body"><p>[[Approved answer from the source landing page.]] Call us right away at <a href="tel:9148098561" data-track="phone" data-location="faq">(914) 809-8561</a>.</p></div>
           </details>
           <details class="faq__item">
@@ -342,38 +380,39 @@
             <div class="faq__body"><p>[[Approved answer from the source landing page.]]</p></div>
           </details>
           <details class="faq__item">
-            <summary>Do you accept dental insurance?</summary>
-            <div class="faq__body"><p>[[Approved insurance answer from the source landing page.]]</p></div>
+            <summary>Do you accept insurance?</summary>
+            <div class="faq__body"><p>[[Approved answer from the source landing page.]]</p></div>
           </details>
           <details class="faq__item">
-            <summary>What payment options do you offer?</summary>
-            <div class="faq__body"><p>[[Approved payment-options answer from the source landing page.]]</p></div>
+            <summary>Do you offer payment plans?</summary>
+            <div class="faq__body"><p>[[Approved answer from the source landing page.]]</p></div>
           </details>
           <details class="faq__item">
             <summary>What if my emergency happens after hours?</summary>
-            <div class="faq__body"><p>[[Approved after-hours answer from the source landing page.]] Our office is open Monday, Tuesday and Thursday 8:30 AM – 5:30 PM, Friday 8:30 AM – 2:30 PM and Saturday 8:30 AM – 1:00 PM. Call <a href="tel:9148098561" data-track="phone" data-location="faq">(914) 809-8561</a>.</p></div>
+            <div class="faq__body"><p>Emergency after hours? Call <a href="tel:9148098561" data-track="phone" data-location="faq">(914) 809-8561</a> and leave a message. We prioritize emergency callbacks the moment we reopen.</p></div>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- ===================== 6. FINAL CTA + LOCATION ===================== -->
+    <!-- ===================== 7. FINAL CTA + LOCATION ===================== -->
     <section class="section section--dark" id="location" aria-labelledby="final-title">
       <div class="container final">
         <div class="final__copy">
-          <h2 id="final-title">Need Emergency Dental Care Now?</h2>
-          <p>Call us or request an appointment and we'll get you seen as soon as possible. [[Approved after-hours emergency messaging from the source landing page.]]</p>
+          <p class="kicker kicker--light">Ready when you are</p>
+          <h2 id="final-title">Ready for your free consultation?</h2>
+          <p>Hudson Valley Dental Medicine offers personalized, patient-focused dentistry designed around your unique needs. Led by Dr. Turturro, our team combines advanced dental capabilities, efficient care, and a welcoming environment.</p>
           <div class="final__cta">
-            <a class="btn btn--primary btn--lg" href="tel:9148098561" data-track="phone" data-location="final"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call Now</a>
+            <a class="btn btn--light btn--lg" href="tel:9148098561" data-track="phone" data-location="final"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call (914) 809-8561</a>
             <a class="btn btn--accent btn--lg" href="#emergency-form" data-track="cta">Get Emergency Care Today</a>
           </div>
 
           <div class="final__details">
             <address class="detail">
               <h3>Hudson Valley Dental Medicine</h3>
-              <p>1983 Crompond Rd #202<br>Cortlandt Manor, NY 10567</p>
+              <p><a href="https://www.google.com/maps/place/Hudson+Valley+Dental+Medicine/@41.2931421,-73.9005739,15z/data=!4m15!1m8!3m7!1s0x89c2c8fdd293630d:0xb6c736b6917f3197!2s1983+Crompond+Rd+%23202,+Cortlandt+Manor,+NY+10567!3b1!8m2!3d41.2908855!4d-73.8954674!16s%2Fg%2F11n09br_s7!3m5!1s0x89c2c8fddb8f38bb:0xedd92132710c267a!8m2!3d41.2908328!4d-73.8955053!16s%2Fg%2F1tfr1c0s" target="_blank" rel="noopener" class="detail__addr">1983 Crompond Rd #202,<br>Cortlandt Manor, NY 10567</a></p>
               <p><a href="tel:9148098561" data-track="phone" data-location="final-address">(914) 809-8561</a></p>
-              <a class="btn btn--ghost btn--light btn--sm" href="https://www.google.com/maps/dir//Hudson+Valley+Dental+Medicine,+1983+Crompond+Rd+%23202,+Cortlandt+Manor,+NY+10567,+United+States/@41.2931421,-73.9005739,15z/data=!4m16!1m7!3m6!1s0x89c2c8fddb8f38bb:0xedd92132710c267a!2sHudson+Valley+Dental+Medicine!8m2!3d41.2908328!4d-73.8955053!16s%2Fg%2F1tfr1c0s!4m7!1m0!1m5!1m1!1s0x89c2c8fddb8f38bb:0xedd92132710c267a!2m2!1d-73.8955053!2d41.2908328" target="_blank" rel="noopener" data-track="directions">
+              <a class="btn btn--ghost btn--light-outline btn--sm" href="https://www.google.com/maps/dir//Hudson+Valley+Dental+Medicine,+1983+Crompond+Rd+%23202,+Cortlandt+Manor,+NY+10567,+United+States/@41.2931421,-73.9005739,15z/data=!4m16!1m7!3m6!1s0x89c2c8fddb8f38bb:0xedd92132710c267a!2sHudson+Valley+Dental+Medicine!8m2!3d41.2908328!4d-73.8955053!16s%2Fg%2F1tfr1c0s!4m7!1m0!1m5!1m1!1s0x89c2c8fddb8f38bb:0xedd92132710c267a!2m2!1d-73.8955053!2d41.2908328" target="_blank" rel="noopener" data-track="directions">
                 <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-pin"/></svg>Get Directions
               </a>
             </address>
@@ -387,6 +426,7 @@
               </dl>
             </div>
           </div>
+          <p class="final__afterhours"><strong>Emergency after hours?</strong> Call <a href="tel:9148098561" data-track="phone" data-location="final-afterhours">(914) 809-8561</a> and leave a message. We prioritize emergency callbacks the moment we reopen.</p>
         </div>
 
         <div class="final__map">
@@ -403,7 +443,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <img src="assets/img/mark-white.png" width="36" height="25" alt="" loading="lazy">
-      <p>© <span id="year">2026</span> Hudson Valley Dental Medicine · 1983 Crompond Rd #202, Cortlandt Manor, NY 10567 · <a href="tel:9148098561" data-track="phone" data-location="footer">(914) 809-8561</a></p>
+      <p>© <span id="year">2026</span> Hudson Valley Dental Medicine · 1983 Crompond Rd #202, Cortlandt Manor, NY 10567 · <a href="tel:9148098561" data-track="phone" data-location="footer">(914) 809-8561</a> · <a href="https://hudsonvalleydentalmedicine.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></p>
     </div>
   </footer>
 
@@ -428,6 +468,6 @@
     <symbol id="i-google" viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 14a6 6 0 0 1 0-3.9V7.5H3.1a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6 12 6z"/></symbol>
   </svg>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=4" defer></script>
 </body>
 </html>

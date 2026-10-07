@@ -10,6 +10,7 @@ css/styles.css        brand styling (Poppins, #007dc3 blue, #0fd8b0 teal)
 js/main.js            sticky CTA, form submit, dataLayer events (≈3 KB)
 assets/fonts/         self-hosted Poppins 400/600/700 (woff2)
 assets/img/           optimised WebP/JPEG/PNG derived from the approved assets
+assets/video/         "Tooth pain? Watch this" clip (540p H.264, loads only on play)
 scripts/optimize-images.py   regenerates assets/img from the originals
 CONTENT-CHECKLIST.md  every string that must be verified against the source page
 ```
@@ -19,12 +20,13 @@ CONTENT-CHECKLIST.md  every string that must be verified against the source page
 | # | Section | Conversion purpose |
 |---|---------|--------------------|
 | 0 | Status bar + compact header | Same-day messaging, phone, Call Now / Get Emergency Care Today |
-| 1 | Hero + emergency form | Answer "can you help, how fast, who, how do I contact you" and capture the lead |
-| 2 | Common Dental Emergencies We Treat | Confirm the visitor's problem is covered; urgency call CTA |
-| 3 | What Happens Next (3 steps) | Reduce anxiety; form CTA |
-| 4 | Meet Dr. Francis Turturro + credentials | Trust; call + form CTAs |
-| 5 | Reviews + FAQ accordion | Social proof and objection handling in one compact block |
-| 6 | Final CTA + address, hours, map, directions | Make calling or navigating effortless |
+| 1 | Hero (copy left, team photo right) + trust badges | Answer "can you help, how fast, who, where" and drive the call |
+| 2 | Common dental emergencies we treat | Confirm the visitor's problem is covered; urgency call CTA |
+| 3 | Emergency appointment form (`#emergency-form`) | Capture the lead; "Skip the Form – Call Now", hours, after-hours note |
+| 4 | What Happens Next (3 steps) | Reduce anxiety; form CTA |
+| 5 | Meet your doctor + "Tooth pain? Watch this" video | Trust; call + form CTAs |
+| 6 | Reviews + FAQ accordion | Social proof and objection handling in one compact block |
+| 7 | Final CTA + address, hours, map, directions, after-hours | Make calling or navigating effortless |
 | – | Mobile sticky bar (Call Now / Emergency Appointment) | Always-available conversion on phones |
 
 ## Running locally
@@ -61,13 +63,15 @@ body). The page pushes these dataLayer events (and mirrors them to `gtag` when p
 | `form_start` | `form_id` | first interaction with the form |
 | `form_submit` | `form_id`, `nature_of_emergency` | successful submit |
 | `directions_click` | – | Get Directions |
+| `video_play` | – | "Tooth pain? Watch this" |
 
 ## Performance notes
 
 * Fonts self-hosted, `font-display: swap`, only 700/400 preloaded.
 * All images have explicit dimensions (no layout shift); below-the-fold images are lazy-loaded
   with WebP + JPEG fallbacks and responsive `srcset`.
-* The Google Maps iframe is lazy-loaded at the bottom of the page.
+* The Google Maps iframe is lazy-loaded at the bottom of the page; the video only loads when played.
+* Stylesheet and script URLs carry a `?v=` query string. Bump it when you change them so GitHub Pages / browser caches pick up the new file.
 * JavaScript is deferred and dependency-free; FAQ accordion uses native `<details>`.
 * Animations are limited to two subtle pulses and button hover, all disabled under
   `prefers-reduced-motion`.

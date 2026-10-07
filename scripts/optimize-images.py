@@ -60,12 +60,12 @@ avatar = doc.crop((0, 0, side, side)).resize((160, 160), Image.LANCZOS)
 avatar.save(os.path.join(OUT, "dr-turturro-avatar-160.webp"), "WEBP", quality=85, method=6)
 avatar.save(os.path.join(OUT, "dr-turturro-avatar-160.jpg"), "JPEG", quality=85, optimize=True)
 
-# --- Hero portrait of Dr. Turturro, cropped from the approved high-res team photo ("Hudson Valley - Staff", 1080x1350)
+# --- Hero image: the approved high-res team photo ("Hudson Valley - Staff", 1080x1350)
 try:
     team = Image.open(find("Hudson_Valley_Staff_1r9ZTM")).convert("RGB")
-    save_set(team.crop((90, 180, 600, 818)), "dr-turturro-hero", [240, 480])
+    save_set(team, "team-hero", [540, 1080], quality=80)
 except SystemExit:
-    print("team photo not found – skipping hero portrait")
+    print("team photo not found – skipping hero image")
 
 # --- Office exterior (approved "Hudson Valley - building" image), cropped to 3:2
 bld = Image.open(find("Hudson_Valley_building")).convert("RGB")

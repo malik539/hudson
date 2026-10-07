@@ -44,6 +44,21 @@
     });
   }
 
+  /* ---------- "Tooth pain? Watch this" video: load on demand ---------- */
+  var playBtn = document.getElementById('videoPlay');
+  var videoEl = document.getElementById('videoEl');
+  var strip = document.getElementById('videoStrip');
+  if (playBtn && videoEl && strip) {
+    playBtn.addEventListener('click', function () {
+      strip.classList.add('is-playing');
+      videoEl.hidden = false;
+      videoEl.load();
+      var p = videoEl.play();
+      if (p && p.catch) p.catch(function () {});
+      track('video_play', {});
+    });
+  }
+
   /* ---------- Emergency appointment form ---------- */
   var form = document.getElementById('emergencyForm');
   if (!form) return;
@@ -88,7 +103,7 @@
     function done() {
       track('form_submit', { form_id: form.id, nature_of_emergency: data.nature_of_emergency });
       form.classList.add('is-sent');
-      setStatus('Thanks, ' + data.first_name + '. We received your request and will call you back shortly. If you need help right away, call (914) 809-8561.', 'success');
+      setStatus('Thanks, ' + data.first_name + '. We received your request and will call you back as soon as possible. If you need help right away, call (914) 809-8561.', 'success');
       status.setAttribute('tabindex', '-1');
       status.focus();
     }

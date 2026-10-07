@@ -1,53 +1,44 @@
 # Content verification checklist
 
-The source landing page (`smilehub.hudsonvalleydentalmedicine.com/emergency-treatment`) and the
-practice website were **blocked by the build environment's network policy**, so the approved copy
-could not be copied verbatim. Everything below is either (a) authoritative data from the brief,
-(b) approved elements the brief itself listed, or (c) placeholder text wrapped in `[[double brackets]]`
-that must be replaced with the exact source-page wording before launch.
+The source landing page (`smilehub.hudsonvalleydentalmedicine.com/emergency-treatment`) was blocked by the
+build environment's network policy, so the copy was taken from the text the client pasted into the brief
+(2026-10-07). Everything on the page now uses that wording except the items listed below.
 
-## Verified / authoritative (from the brief) – no action needed
+## Verified / approved – no action needed
 
-- Phone (914) 809-8561 and every `tel:9148098561` link (16 occurrences)
-- Address 1983 Crompond Rd #202, Cortlandt Manor, NY 10567
-- Office hours (Mon/Tue/Thu 8:30–5:30, Fri 8:30–2:30, Sat 8:30–1:00, Wed/Sun closed)
-- Google Maps place URL and Get Directions URL (used exactly as supplied)
-- Emergency conditions list (8 items, section 2 and the form's dropdown)
-- Process step names: Reach Out · Get Seen Fast · Leave With a Plan
-- Trust signals: Google reviews, New patients welcome, Same-day appointments, Digital X-rays, Dr. Francis Turturro
-- Credentials: DDS, Columbia University College of Dental Medicine; General Practice Residency, Westchester Medical Center
-- CTA labels: Call Now · Call (914) 809-8561 · Get Emergency Care Today · Emergency Appointment · Get Directions
-- Form fields: First Name, Last Name, Phone, Email, Nature of Dental Emergency + consent
-- Google rating 4.9 / 220 reviews and six reviews (Laureen Treacy, Maribel Tapia, Rachele Siniscalchi, Mike Cartolano, Jeff Silver, Anitha) copied verbatim from the Google screenshots supplied by the client
+- Phone (914) 809-8561 on every `tel:9148098561` link; address; office hours; Google Maps place and
+  directions URLs (used exactly as supplied in the brief)
+- Hero: "Same-Day Appointments Available", "In Dental pain? We'll see you today.", supporting sentence,
+  trust line "Dr. Francis Turturro · Columbia DDS · 12+ yrs local", address line
+- Badges: New Patients Welcome · Same-Day Appointments · On-Site Digital X-Rays
+- "What we treat" heading, intro and the 8 conditions (also used as the form's dropdown options)
+- Urgency block: "In pain right now? Don't wait." + "Call our Cortlandt office for the next available emergency appointment."
+- Form: field labels, "Skip the Form – Call Now", consent sentence with the privacy-policy link, button label
+- "What Happens Next" heading, subline and the three steps
+- Doctor: "meet your doctor", bio paragraph, three credential bullets
+- Video block label "Tooth pain? Watch this" (clip: `HVDM_toothpain.mp4` from the client's Drive, re-encoded to 540p)
+- Reviews heading "What Hudson Valley Dental Medicine families are saying"; six reviews copied verbatim from the
+  Google screenshots the client supplied (Laureen Treacy, Maribel Tapia, Rachele Siniscalchi, Mike Cartolano, Jeff Silver, Anitha)
+- FAQ question wording (6 questions)
+- Final section: "Ready when you are", "Ready for your free consultation?", paragraph, after-hours sentence
 
-## Must be replaced with source-page copy (search `[[` in index.html)
+## Decisions to confirm
 
-| Location | Placeholder | What to paste |
-|----------|-------------|---------------|
-| FAQ: knocked-out tooth | `[[Approved answer…]]` | Source answer (do not add medical guidance) |
-| FAQ: emergency extractions | `[[Approved answer…]]` | Source answer |
-| FAQ: insurance | `[[Approved insurance answer…]]` | Source answer |
-| FAQ: payment options | `[[Approved payment-options answer…]]` | Source answer |
-| FAQ: after hours | `[[Approved after-hours answer…]]` | Source answer |
-| Final CTA paragraph | `[[Approved after-hours emergency messaging…]]` | Source after-hours sentence |
+| Location | What the page shows | Why |
+|----------|--------------------|-----|
+| Hero trust line, reviews kicker and badge | **4.9 · 220 Google Reviews** | Source page says "5.0 · 200+". The client's own Google screenshots show 4.9 and 220, so the verified current figures are used to keep ad claims accurate. Change to the source wording if preferred. |
+| Hero badge | "200+ Google Reviews" | Source badge reads "200+ 5-Star Reviews"; the number of 5-star reviews could not be verified, so the badge states the review count only. |
+| Reviews shown | The six reviews the client supplied | The source page lists six different, shorter reviews (Laurel Maul, Susan Wylock, Henry Schrot, Sarah Licciardello, janet heller, Trish Zez). Either set is approved; swap if the source set is preferred. |
+| Video subtitle | "A quick word from Dr. Turturro." | Small connector line under the approved label; delete if unwanted. |
+| Form section kicker/heading | "Emergency appointment" / "Get Emergency Care Today" | The source page has no heading above the form; the approved CTA text is reused as the heading. |
+| Final heading | "Ready for your free consultation?" | Approved copy, but note it is a consultation offer on an emergency page; keep or swap for emergency wording at the client's discretion. |
+| Form thank-you message | "Thanks, {name}. We received your request and will call you back as soon as possible…" | Drafted; the source confirmation text was not provided. |
 
-## Drafted to match approved meaning – confirm wording against the source page
+## Still needs source wording (search `[[` in index.html – 5 places)
 
-| Location | Current text | Note |
-|----------|--------------|------|
-| Status bar | "Same-day emergency appointments available." | Mirrors the approved same-day messaging |
-| Hero eyebrow | "Emergency Dental Treatment · Cortlandt Manor, NY" | Swap for the existing eyebrow if different |
-| Hero H1 | "Dental Emergency? Get Seen Today." | Swap for the existing H1 |
-| Hero supporting copy | Uses only the approved conditions + same-day claim | Swap for existing paragraph |
-| Step descriptions (01–03) | Short drafts referencing call/form, same-day visit, digital X-rays, insurance & payment | Swap for existing step copy |
-| Doctor bio paragraph | Columbia DDS + Westchester GPR + "cared for patients in Cortlandt Manor and the surrounding Hudson Valley communities for years" | Replace with the page's bio; confirm the local-experience sentence |
-| Trust strip subtitles | "Columbia-trained · Local dentist", "Fast, accurate diagnosis", "No referral needed" | Edit/remove if not on the source page |
-| Form consent text | Standard SMS/phone consent sentence | Replace with the existing consent language |
-| FAQ: what qualifies | Built from the approved conditions list | Confirm |
-| Section intros | "If it hurts, is broken, or is swelling, don't wait it out…", "Three simple steps…" | Editorial connectors; trim if preferred |
+FAQ answers for: knocked-out tooth, emergency extractions, insurance, payment plans. (The first FAQ answer is
+built from the approved conditions list; the after-hours answer uses the approved after-hours sentence.)
 
-## Deliberately omitted (not on the approved landing page as far as known)
+## Deliberately omitted
 
-- Awards (e.g. Westchester Magazine Top Dentist), statistics, pricing, guarantees, extra treatments.
-- The approved video (if one exists on the source page) – add it inside section 4 as a lazy-loaded
-  `<iframe>` or a poster-click embed to keep the page compact.
+- Awards, statistics, pricing or guarantees that are not on the source page.
