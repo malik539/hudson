@@ -1,6 +1,7 @@
 /* Hudson Valley Dental Medicine – New Patient (Free Consultation) landing page
-   Dependency-free: dataLayer events, sticky mobile CTA, reviews ticker, hello video modal,
-   consultation form (validation, bot protection, POST to data-endpoint, thank-you state). */
+   Dependency-free: dataLayer events, sticky mobile CTA, reviews ticker, hero hello video,
+   video modal (patient story / hello), popup consultation form (validation, bot protection,
+   POST to data-endpoint, thank-you state). */
 (function () {
   'use strict';
 
@@ -12,6 +13,8 @@
     dl.push(payload);
     if (typeof window.gtag === 'function') window.gtag('event', event, data);
   }
+  function text(el) { return el.textContent.replace(/\s+/g, ' ').trim(); }
+  function each(list, fn) { Array.prototype.forEach.call(list, fn); }
 
   /* ---------- CTA + phone + directions click tracking ---------- */
   document.addEventListener('click', function (e) {
@@ -19,38 +22,47 @@
     if (!a) return;
     var type = a.getAttribute('data-track');
     if (type === 'phone') track('phone_click', { link_location: a.getAttribute('data-location') || 'page', phone_number: PHONE });
-    else if (type === 'cta') track('cta_click', { cta_text: a.textContent.replace(/\s+/g, ' ').trim() });
+    else if (type === 'cta') track('cta_click', { cta_text: text(a) });
     else if (type === 'directions') track('directions_click', {});
   });
 
+  /* ---------- Dialog helpers (popup form + video modal) ---------- */
+  var lastOpener = null;
+  function openDialog(dialog, opener) {
+    lastOpener = opener || null;
+    document.body.classList.add('modal-open');
+    if (typeof dialog.showModal === 'function') { if (!dialog.open) dialog.showModal(); }
+    else dialog.setAttribute('open', '');
+  }
+  function closeDialog(dialog) {
+    if (typeof dialog.close === 'function') { if (dialog.open) dialog.close(); }
+    else dialog.removeAttribute('open');
+    document.body.classList.remove('modal-open');
+    if (lastOpener && lastOpener.focus) lastOpener.focus();
+  }
+  function wireDialog(dialog, onClose) {
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) closeDialog(dialog); });
+    dialog.addEventListener('cancel', function (e) { e.preventDefault(); closeDialog(dialog); });
+    dialog.addEventListener('close', function () { document.body.classList.remove('modal-open'); if (onClose) onClose(); });
+  }
+
   /* ---------- Subtle reveal for below-the-fold blocks ---------- */
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var revealTargets = document.querySelectorAll('.benefits, .itero, .services, .doctor, .faq, .final');
   if ('IntersectionObserver' in window && !reduceMotion) {
     document.documentElement.classList.add('js');
     var ro = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); ro.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });
-    Array.prototype.forEach.call(revealTargets, function (el) { el.classList.add('reveal'); ro.observe(el); });
+    each(document.querySelectorAll('.benefits, .itero, .services, .doctor, .story, .results, .faq, .final'), function (el) { el.classList.add('reveal'); ro.observe(el); });
   }
 
-  /* ---------- Mobile sticky CTA: show once the hero CTAs scroll away, hide while the form is on screen ---------- */
+  /* ---------- Mobile sticky CTA: show once the hero CTAs scroll away ---------- */
   var sticky = document.getElementById('stickyCta');
   var heroCta = document.querySelector('.hero__cta');
-  var formCard = document.getElementById('consult-form');
-  if (sticky && 'IntersectionObserver' in window) {
-    if (heroCta) {
-      new IntersectionObserver(function (entries) {
-        sticky.classList.toggle('is-visible', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
-      }, { threshold: 0 }).observe(heroCta);
-    } else {
-      sticky.classList.add('is-visible');
-    }
-    if (formCard) {
-      new IntersectionObserver(function (entries) {
-        sticky.classList.toggle('is-covered', entries[0].isIntersecting);
-      }, { threshold: 0 }).observe(formCard);
-    }
+  if (sticky && heroCta && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      sticky.classList.toggle('is-visible', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
+    }, { threshold: 0 }).observe(heroCta);
   } else if (sticky) {
     sticky.classList.add('is-visible');
   }
@@ -69,36 +81,68 @@
     ticker.classList.add('is-ready');
   }
 
-  /* ---------- Dr. Turturro hello video (modal, loads only on open) ---------- */
-  var modal = document.getElementById('videoModal');
-  var video = document.getElementById('videoEl');
-  if (modal && video) {
-    var lastOpener = null;
-    function openVideo(btn) {
-      lastOpener = btn || null;
-      if (typeof modal.showModal === 'function') modal.showModal(); else modal.setAttribute('open', '');
-      var p = video.play();
+  /* ---------- Hero hello video: plays in place, loads only on play ---------- */
+  var heroVideo = document.getElementById('heroVideo');
+  var heroPlay = document.getElementById('heroVideoPlay');
+  var heroEl = document.getElementById('heroVideoEl');
+  if (heroVideo && heroPlay && heroEl) {
+    heroPlay.addEventListener('click', function () {
+      heroVideo.classList.add('is-playing');
+      heroEl.hidden = false;
+      heroEl.load();
+      var p = heroEl.play();
       if (p && p.catch) p.catch(function () {});
       track('video_play', { video_title: 'A quick hello from Dr. Turturro' });
-    }
-    function closeVideo() {
-      video.pause();
-      if (typeof modal.close === 'function' && modal.open) modal.close(); else modal.removeAttribute('open');
-      if (lastOpener && lastOpener.focus) lastOpener.focus();
-    }
-    Array.prototype.forEach.call(document.querySelectorAll('[data-video-open]'), function (btn) {
-      btn.addEventListener('click', function () { openVideo(btn); });
     });
-    Array.prototype.forEach.call(modal.querySelectorAll('[data-video-close]'), function (btn) {
-      btn.addEventListener('click', closeVideo);
-    });
-    modal.addEventListener('click', function (e) { if (e.target === modal) closeVideo(); });
-    modal.addEventListener('close', function () { video.pause(); });
-    modal.addEventListener('cancel', function (e) { e.preventDefault(); closeVideo(); });
   }
 
-  /* ---------- Free consultation form ---------- */
+  /* ---------- Video modal: hello video / patient story (source set on open) ---------- */
+  var vModal = document.getElementById('videoModal');
+  var video = document.getElementById('videoEl');
+  var vCaption = document.getElementById('videoCaption');
+  if (vModal && video) {
+    each(document.querySelectorAll('[data-video-open]'), function (btn) {
+      btn.addEventListener('click', function () {
+        if (heroEl && !heroEl.paused) heroEl.pause();
+        var src = btn.getAttribute('data-video-src');
+        var landscape = btn.getAttribute('data-video-orientation') === 'landscape';
+        vModal.classList.toggle('is-landscape', landscape);
+        vModal.setAttribute('aria-label', btn.getAttribute('data-video-title') || 'Video');
+        if (vCaption) vCaption.textContent = btn.getAttribute('data-video-caption') || '';
+        if (video.getAttribute('src') !== src) {
+          video.setAttribute('poster', btn.getAttribute('data-video-poster') || '');
+          video.setAttribute('src', src);
+          video.load();
+        }
+        openDialog(vModal, btn);
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {});
+        track('video_play', { video_title: btn.getAttribute('data-video-title') || 'video' });
+      });
+    });
+    each(vModal.querySelectorAll('[data-video-close]'), function (btn) { btn.addEventListener('click', function () { closeDialog(vModal); }); });
+    wireDialog(vModal, function () { video.pause(); });
+  }
+
+  /* ---------- Popup consultation form ---------- */
+  var fModal = document.getElementById('consult-form');
   var form = document.getElementById('consultForm');
+  if (fModal && form) {
+    each(document.querySelectorAll('[data-form-open]'), function (el) {
+      el.addEventListener('click', function (e) {
+        if (typeof fModal.showModal !== 'function') return; // no <dialog> support: let the anchor scroll to the inline form
+        e.preventDefault();
+        if (vModal && vModal.open) closeDialog(vModal);
+        openDialog(fModal, el);
+        track('form_open', { cta_text: text(el) });
+        var first = form.querySelector('input:not([type="hidden"]):not(.hp)');
+        if (first && !form.classList.contains('is-sent')) setTimeout(function () { first.focus({ preventScroll: true }); }, 50);
+      });
+    });
+    each(fModal.querySelectorAll('[data-form-close]'), function (btn) { btn.addEventListener('click', function () { closeDialog(fModal); }); });
+    wireDialog(fModal);
+  }
+
   if (form) {
     var status = form.querySelector('.form__status');
     var loadedAt = Date.now();
@@ -119,12 +163,12 @@
 
     function validate() {
       var firstBad = null;
-      Array.prototype.forEach.call(form.querySelectorAll('input[required], textarea[required]'), function (f) {
+      each(form.querySelectorAll('input[required], textarea[required]'), function (f) {
         var valid = f.type === 'checkbox' ? f.checked : f.checkValidity();
         f.setAttribute('aria-invalid', valid ? 'false' : 'true');
         if (!valid && !firstBad) firstBad = f;
       });
-      Array.prototype.forEach.call(form.querySelectorAll('[data-chip-group]'), function (group) {
+      each(form.querySelectorAll('[data-chip-group]'), function (group) {
         var any = group.querySelector('input:checked');
         var chips = group.querySelector('.chips');
         group.setAttribute('aria-invalid', any ? 'false' : 'true');
@@ -167,7 +211,7 @@
         form.classList.add('is-sent');
         setStatus('Thanks, ' + data.first_name + '. We received your request and will confirm your free consultation by phone or text. Need us sooner? Call (914) 350-2622.', 'success');
         status.setAttribute('tabindex', '-1');
-        status.focus();
+        status.focus({ preventScroll: true });
       }
 
       // Submitted faster than a person can type: treat as a bot (confirm visually, send nothing, no conversion).

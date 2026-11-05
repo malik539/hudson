@@ -20,7 +20,7 @@ treatment plan (never free treatment). Goal: free-consultation form submissions 
 **(914) 350-2622** (`tel:9143502622`).
 
 ```
-new-patient/index.html   page (6 sections + top bar, header, mobile sticky CTA, hello-video modal)
+new-patient/index.html   page (6 sections + top bar, header, popup form, video modal, mobile sticky CTA)
 css/new-patient.css      warm/premium brand styling (Poppins, #007dc3 blue, #0fd8b0 teal, navy)
 js/new-patient.js        sticky CTA, reviews ticker, video modal, form submit, dataLayer events (≈9 KB)
 NEW-PATIENT-CHECKLIST.md every string / decision that must be verified against the source page
@@ -29,17 +29,18 @@ NEW-PATIENT-CHECKLIST.md every string / decision that must be verified against t
 | # | Section | Conversion purpose |
 |---|---------|--------------------|
 | 0 | "Now Welcoming New Patients" bar + compact header | Phone + Book Your Free Consultation |
-| 1 | Hero (offer, clarification, 5.0 · 200+ reviews, CTAs, trust points, Dr. Turturro hello video) + the **only** lead form (`#consult-form`) | Explain the offer in 5 seconds and capture the lead |
+| 1 | Hero: offer, clarification, 5.0 · 200+ reviews, CTAs, trust points + Dr. Turturro's hello video (plays in place, loads on play) | Explain the offer in 5 seconds; open the popup form or call |
 | 2 | Why Choose Hudson Valley Dental Medicine (3×2 benefits) + iTero feature | Differentiate; CTA |
 | 3 | Our Comprehensive Dental Services (5 compact cards) | Show the practice is a long-term dental home |
 | 4 | Meet Dr. Francis Turturro (photo, bio, credentials) | Doctor credibility; CTA |
-| 5 | Patient stories (reviews ticker) + before/after (hidden until assets arrive) + FAQ accordion | Social proof and objection handling |
+| 5 | Patient stories: Angel's video story, reviews ticker, before/after images + FAQ accordion | Social proof and objection handling |
 | 6 | Final CTA + address, hours, map, directions | Make booking or navigating effortless |
-| – | Mobile sticky bar (Call Now / Free Consultation) | Always-available conversion on phones; hides while the form is on screen |
+| – | Popup lead form (`<dialog id="consult-form">`, the **only** form) opened by every "Book Your Free Consultation" CTA, the skip link and the mobile sticky bar (Call Now / Free Consultation) | One form, reachable from anywhere on the page |
 
 ### Connecting the form
 
-Set `data-endpoint` on `<form id="consultForm">` to the practice's LeadConnector / GHL inbound webhook
+The form lives inside the `#consult-form` dialog at the end of `index.html`. Set `data-endpoint` on
+`<form id="consultForm">` to the practice's LeadConnector / GHL inbound webhook
 (or any POST endpoint). Payload (JSON): `first_name`, `last_name`, `phone`, `email`, `preferred_days`
 ("Monday, Thursday"), `preferred_times` ("Morning"), `comments`, `consent`, `source`, `page_url`, plus
 `gclid` / `utm_*` when present on the landing URL. Bot protection: honeypot field + submissions faster
@@ -49,15 +50,24 @@ the iframe and keep the surrounding `.form-card` so the `#consult-form` links ke
 
 ### Tracking
 
-Paste the GTM container into the marked slots (head and body). dataLayer events (mirrored to `gtag`):
-`phone_click` {link_location, phone_number}, `cta_click` {cta_text}, `form_start` {form_id},
+The practice's GTM container **GTM-KD6LN4MQ** (the one the live smilehub page loads) is active in the
+head and body. Add the Google Ads / GA4 / call-tracking tags and triggers inside GTM. dataLayer events
+(mirrored to `gtag`): `phone_click` {link_location, phone_number}, `cta_click` {cta_text},
+`form_open` {cta_text}, `form_start` {form_id},
 `form_submit` {form_id, preferred_days, preferred_times}, `directions_click`, `video_play` {video_title}.
 Bump the `?v=` on `css/new-patient.css` and `js/new-patient.js` when you change them.
 
-### Pending assets (see NEW-PATIENT-CHECKLIST.md)
+### Video assets
 
-60-second Dr. Turturro hello video (the 14-second HVDM clip is used meanwhile), "Angel" patient story
-video, before/after images (block ships hidden), iTero image (illustration used meanwhile).
+`assets/video/hello-540.mp4` (Dr. Turturro hello, 21 s, 540p H.264, 1.4 MB) and
+`assets/video/testimonial-720.mp4` (Angel's story, 25 s, 720p H.264, 1.6 MB) are re-encoded from the
+GHL-hosted originals so they play in every browser; both load only when played. Posters:
+`assets/img/hello-poster-540.*`, `assets/img/testimonial-poster-*.*`.
+
+### Still to supply / configure (see NEW-PATIENT-CHECKLIST.md)
+
+Form `data-endpoint` (GHL inbound webhook) or the GHL form embed; Google Ads conversion tags/triggers in
+GTM; an approved iTero image (an illustration is used meanwhile).
 
 ---
 

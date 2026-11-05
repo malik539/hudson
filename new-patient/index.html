@@ -14,12 +14,15 @@
   <!-- Self-hosted brand font (Poppins) – preload only the weights used above the fold -->
   <link rel="preload" href="../assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../css/new-patient.css?v=1">
+  <link rel="preload" href="../assets/img/hello-poster-540.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="../css/new-patient.css?v=2">
+  <noscript><style>.form-modal{display:block;position:static;width:auto;max-width:560px;margin:24px auto;max-height:none}.form-modal__close{display:none}</style></noscript>
 
   <!-- ==========================================================================
-       TRACKING (slot) – paste the practice's Google Tag Manager container here so
-       Google Ads conversions, GA4, Meta Pixel and call tracking fire on this page.
-       The page pushes these dataLayer events for GTM triggers:
+       TRACKING – the practice's Google Tag Manager container (GTM-KD6LN4MQ, the same
+       container the live smilehub page loads). Add Google Ads / GA4 / call-tracking
+       tags and triggers inside GTM. The page pushes these dataLayer events:
+         form_open         { cta_text }                      – consultation popup opened
          phone_click       { link_location, phone_number }  – any tel: link
          cta_click         { cta_text }                     – consultation CTAs
          form_start        { form_id }                      – first interaction with the form
@@ -28,9 +31,7 @@
          video_play        { video_title }                  – Dr. Turturro hello video
        ========================================================================== -->
   <script>window.dataLayer = window.dataLayer || [];</script>
-  <!--
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-  -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD6LN4MQ');</script>
 
   <script type="application/ld+json">
   {
@@ -60,10 +61,8 @@
   </script>
 </head>
 <body>
-  <!-- GTM noscript slot:
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  -->
-  <a class="skip-link" href="#consult-form">Skip to the free consultation form</a>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD6LN4MQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <a class="skip-link" href="#consult-form" data-form-open>Skip to the free consultation form</a>
 
   <!-- ===================== HEADER: NEW PATIENT BAR + COMPACT HEADER ===================== -->
   <div class="topbar" role="status">
@@ -87,7 +86,7 @@
         <a class="header__call" href="tel:9143502622" data-track="phone" data-location="header-icon" aria-label="Call (914) 350-2622">
           <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>
         </a>
-        <a class="btn btn--primary btn--sm" href="#consult-form" data-track="cta"><span><span class="hide-mobile-inline">Book Your </span>Free Consultation</span></a>
+        <a class="btn btn--primary btn--sm" href="#consult-form" data-track="cta" data-form-open><span><span class="hide-mobile-inline">Book Your </span>Free Consultation</span></a>
       </div>
     </div>
   </header>
@@ -109,7 +108,7 @@
           </a>
 
           <div class="hero__cta">
-            <a class="btn btn--accent btn--lg" href="#consult-form" data-track="cta">Book Your Free Consultation</a>
+            <a class="btn btn--accent btn--lg" href="#consult-form" data-track="cta" data-form-open>Book Your Free Consultation</a>
             <a class="btn btn--outline btn--lg" href="tel:9143502622" data-track="phone" data-location="hero">
               <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call (914) 350-2622
             </a>
@@ -123,91 +122,27 @@
           </ul>
         </div>
 
-        <!-- Doctor trust element: portrait + short hello video (opens in a compact modal, never dominates the hero) -->
-        <div class="hero__doctor">
-          <picture>
-            <source srcset="../assets/img/dr-turturro-avatar-160.webp" type="image/webp">
-            <img src="../assets/img/dr-turturro-avatar-160.jpg" width="64" height="64" alt="Dr. Francis Turturro, DDS" decoding="async">
-          </picture>
-          <div class="hero__doctor-text">
-            <strong>Dr. Francis Turturro, DDS</strong>
-            <span>Columbia University · Westchester County native</span>
-          </div>
-          <button class="hero__doctor-play" type="button" data-video-open>
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-play"/></svg>
-            <span>A quick hello<small>14 sec</small></span>
+        <!-- Dr. Turturro hello video (the video from the live page's hero; plays in place, loads only on play) -->
+        <div class="hero__video" id="heroVideo">
+          <button class="hero__video-play" type="button" id="heroVideoPlay" aria-label="Play video: a quick hello from Dr. Francis Turturro">
+            <picture>
+              <source srcset="../assets/img/hello-poster-540.webp" type="image/webp">
+              <img src="../assets/img/hello-poster-540.jpg" width="540" height="960" alt="Dr. Francis Turturro, DDS, in a treatment room at Hudson Valley Dental Medicine" fetchpriority="high" decoding="async">
+            </picture>
+            <span class="hero__video-label">Meet Dr. Turturro</span>
+            <span class="hero__video-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-play"/></svg></span>
+            <span class="hero__video-dur" aria-hidden="true">0:21</span>
           </button>
-        </div>
-
-        <!-- ===== PRIMARY (ONLY) LEAD FORM =====
-             INTEGRATION: set data-endpoint to the practice's LeadConnector / GHL inbound webhook
-             (or any POST endpoint) – see README.md. Field names match the approved form:
-             First Name, Last Name, Phone Number, Email, Preferred Appointment Day(s),
-             Preferred Appointment Time(s), Questions / Comments, consent.
-             If the practice prefers the LeadConnector embedded form, replace the <form> with the
-             LeadConnector iframe and keep the surrounding .form-card so #consult-form links still work. -->
-        <div class="form-card" id="consult-form">
-          <div class="form-card__head">
-            <p class="kicker">Book now</p>
-            <h2>Book Your Free Consultation</h2>
-            <p>Takes less than a minute. Our team confirms your appointment by phone or text.</p>
-          </div>
-          <form class="form" id="consultForm" method="post" action="#" data-endpoint="" novalidate>
-            <div class="form__row">
-              <div class="field">
-                <label for="first_name">First Name <span class="req" aria-hidden="true">*</span></label>
-                <input id="first_name" name="first_name" type="text" autocomplete="given-name" required>
-              </div>
-              <div class="field">
-                <label for="last_name">Last Name <span class="req" aria-hidden="true">*</span></label>
-                <input id="last_name" name="last_name" type="text" autocomplete="family-name" required>
-              </div>
-            </div>
-            <div class="form__row">
-              <div class="field">
-                <label for="phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
-                <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
-              </div>
-              <div class="field">
-                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required>
-              </div>
-            </div>
-            <fieldset class="field field--chips" data-chip-group>
-              <legend>Preferred Appointment Day(s) <span class="req" aria-hidden="true">*</span></legend>
-              <div class="chips">
-                <label class="chip"><input type="checkbox" name="preferred_days" value="Monday"><span>Mon</span></label>
-                <label class="chip"><input type="checkbox" name="preferred_days" value="Tuesday"><span>Tue</span></label>
-                <label class="chip"><input type="checkbox" name="preferred_days" value="Thursday"><span>Thu</span></label>
-                <label class="chip"><input type="checkbox" name="preferred_days" value="Friday"><span>Fri</span></label>
-                <label class="chip"><input type="checkbox" name="preferred_days" value="Saturday"><span>Sat</span></label>
-                <label class="chip"><input type="checkbox" name="preferred_days" value="Any day"><span>Any day</span></label>
-              </div>
-            </fieldset>
-            <fieldset class="field field--chips" data-chip-group>
-              <legend>Preferred Appointment Time(s) <span class="req" aria-hidden="true">*</span></legend>
-              <div class="chips">
-                <label class="chip"><input type="checkbox" name="preferred_times" value="Morning"><span>Morning</span></label>
-                <label class="chip"><input type="checkbox" name="preferred_times" value="Afternoon"><span>Afternoon</span></label>
-                <label class="chip"><input type="checkbox" name="preferred_times" value="Any time"><span>Any time</span></label>
-              </div>
-            </fieldset>
-            <div class="field">
-              <label for="comments">Questions / Comments <span class="req" aria-hidden="true">*</span></label>
-              <textarea id="comments" name="comments" rows="2" required placeholder="What would you like us to know before your visit?"></textarea>
-            </div>
-            <div class="field field--check">
-              <input id="consent" name="consent" type="checkbox" value="yes" required>
-              <label for="consent">I agree to <a href="https://hudsonvalleydentalmedicine.com/privacy-policy/" target="_blank" rel="noopener">terms &amp; conditions</a> provided by the company. By providing my phone number, I agree to receive text messages from the business.</label>
-            </div>
-            <!-- Bot protection: honeypot field + minimum time-to-submit (see js/new-patient.js).
-                 To add reCAPTCHA / Turnstile, place the widget here and verify the token at the endpoint. -->
-            <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <input type="hidden" name="form_loaded_at" value="">
-            <button class="btn btn--accent btn--lg btn--block" type="submit">Book My Free Consultation</button>
-            <p class="form__note"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-lock"/></svg>New patients only. We'll reach out by phone or text to confirm.</p>
-            <p class="form__status" role="status" aria-live="polite"></p>
-          </form>
+          <video class="hero__video-el" id="heroVideoEl" playsinline controls preload="none" poster="../assets/img/hello-poster-540.jpg" width="540" height="960" hidden>
+            <source src="../assets/video/hello-540.mp4" type="video/mp4">
+          </video>
+          <p class="hero__video-caption">
+            <picture>
+              <source srcset="../assets/img/dr-turturro-avatar-160.webp" type="image/webp">
+              <img src="../assets/img/dr-turturro-avatar-160.jpg" width="36" height="36" alt="" loading="lazy" decoding="async">
+            </picture>
+            <span><strong>Dr. Francis Turturro, DDS</strong>A quick hello before your visit</span>
+          </p>
         </div>
       </div>
     </section>
@@ -236,7 +171,7 @@
             <p class="kicker kicker--teal">iTero 3D digital simulation</p>
             <h3>See your new smile before treatment begins.</h3>
             <p>Preview your new smile before treatment begins with iTero 3D digital simulation, then review a personalized plan with Dr. Turturro.</p>
-            <a class="btn btn--accent" href="#consult-form" data-track="cta">Book Your Free Consultation</a>
+            <a class="btn btn--accent" href="#consult-form" data-track="cta" data-form-open>Book Your Free Consultation</a>
           </div>
           <figure class="itero__visual" aria-hidden="true">
             <svg viewBox="0 0 320 220" width="320" height="220" role="img" focusable="false">
@@ -336,8 +271,8 @@
             <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-pin"/></svg><span>12+ years serving Bronxville &amp; Yorktown families</span></li>
           </ul>
           <div class="doctor__cta">
-            <a class="btn btn--accent" href="#consult-form" data-track="cta">Book Your Free Consultation</a>
-            <button class="btn btn--ghost" type="button" data-video-open><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-play"/></svg>Watch a quick hello</button>
+            <a class="btn btn--accent" href="#consult-form" data-track="cta" data-form-open>Book Your Free Consultation</a>
+            <button class="btn btn--ghost" type="button" data-video-open data-video-src="../assets/video/hello-540.mp4" data-video-poster="../assets/img/hello-poster-540.jpg" data-video-orientation="portrait" data-video-title="A quick hello from Dr. Turturro" data-video-caption="Dr. Francis Turturro, DDS · A quick hello before your visit"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-play"/></svg>Watch a quick hello</button>
           </div>
         </div>
       </div>
@@ -355,6 +290,25 @@
             <svg class="icon icon--g" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-google"/></svg>
             <span><strong>5.0 <span class="stars" aria-hidden="true">★★★★★</span></strong><small>200+ Google reviews</small></span>
           </a>
+        </div>
+
+        <!-- Patient story video (Angel) from the live page; opens in the video modal, loads only on play -->
+        <div class="story">
+          <button class="story__play" type="button" data-video-open data-video-src="../assets/video/testimonial-720.mp4" data-video-poster="../assets/img/testimonial-poster-720.jpg" data-video-orientation="landscape" data-video-title="Angel – patient story" data-video-caption="Angel · Hudson Valley Dental Medicine patient" aria-label="Play video: Angel, Hudson Valley Dental Medicine patient">
+            <picture>
+              <source type="image/webp" srcset="../assets/img/testimonial-poster-480.webp 480w, ../assets/img/testimonial-poster-720.webp 720w" sizes="(min-width: 960px) 440px, 100vw">
+              <img src="../assets/img/testimonial-poster-720.jpg" srcset="../assets/img/testimonial-poster-480.jpg 480w, ../assets/img/testimonial-poster-720.jpg 720w" sizes="(min-width: 960px) 440px, 100vw" width="720" height="516" alt="Angel, a Hudson Valley Dental Medicine patient, speaking on camera" loading="lazy" decoding="async">
+            </picture>
+            <span class="story__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-play"/></svg></span>
+            <span class="story__dur" aria-hidden="true">0:25</span>
+          </button>
+          <div class="story__body">
+            <p class="kicker kicker--teal">Patient story</p>
+            <h3>Angel</h3>
+            <p class="story__role">Hudson Valley Dental Medicine patient</p>
+            <p>Hear from Angel, one of the families who trust Dr. Turturro and the Hudson Valley Dental Medicine team with their smiles.</p>
+            <button class="btn btn--ghost" type="button" data-video-open data-video-src="../assets/video/testimonial-720.mp4" data-video-poster="../assets/img/testimonial-poster-720.jpg" data-video-orientation="landscape" data-video-title="Angel – patient story" data-video-caption="Angel · Hudson Valley Dental Medicine patient"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-play"/></svg>Watch Angel's story</button>
+          </div>
         </div>
 
         <!-- Real Google reviews supplied by the client (verbatim), shown as a slow continuous ticker. -->
@@ -393,18 +347,27 @@
           </ul>
         </div>
 
-        <!-- PROVEN RESULTS – before / after.
-             The approved before/after images were not supplied with this brief, so the block ships hidden.
-             To enable: add the two images to ../assets/img/ (e.g. before-800.webp / after-800.webp), fill the
-             src/alt below and remove the `hidden` attribute. The disclaimer stays with the component. -->
-        <div class="results" id="results" hidden>
+        <!-- PROVEN RESULTS – the two before / after images from the live page -->
+        <div class="results" id="results">
           <div class="section__head">
             <p class="kicker">Proven results</p>
             <h2>Hudson Valley Dental Medicine before / after</h2>
           </div>
-          <div class="results__grid">
-            <figure class="results__item"><img src="" width="800" height="600" alt="" loading="lazy" decoding="async"><figcaption>Before</figcaption></figure>
-            <figure class="results__item"><img src="" width="800" height="600" alt="" loading="lazy" decoding="async"><figcaption>After</figcaption></figure>
+          <div class="results__row">
+            <figure class="results__item">
+              <picture>
+                <source type="image/webp" srcset="../assets/img/results-1-480.webp 480w, ../assets/img/results-1-800.webp 800w" sizes="(min-width: 640px) 360px, 100vw">
+                <img src="../assets/img/results-1-800.jpg" srcset="../assets/img/results-1-480.jpg 480w, ../assets/img/results-1-800.jpg 800w" sizes="(min-width: 640px) 360px, 100vw" width="800" height="710" alt="Patient smile before treatment (top) and after treatment (bottom)" loading="lazy" decoding="async">
+              </picture>
+              <figcaption>Before / after</figcaption>
+            </figure>
+            <figure class="results__item">
+              <picture>
+                <source type="image/webp" srcset="../assets/img/results-2-480.webp 480w, ../assets/img/results-2-800.webp 800w" sizes="(min-width: 640px) 480px, 100vw">
+                <img src="../assets/img/results-2-800.jpg" srcset="../assets/img/results-2-480.jpg 480w, ../assets/img/results-2-800.jpg 800w" sizes="(min-width: 640px) 480px, 100vw" width="800" height="502" alt="Split view of a smile before and after cosmetic treatment" loading="lazy" decoding="async">
+              </picture>
+              <figcaption>Before / after</figcaption>
+            </figure>
           </div>
           <p class="results__disclaimer">Results vary by patient and case complexity. Treatment lengths are typical but not guaranteed.</p>
         </div>
@@ -444,7 +407,7 @@
           <h2 id="final-title">Ready for Your Free Consultation?</h2>
           <p>Hudson Valley Dental Medicine offers personalized, patient-focused dentistry designed around your unique needs. Led by Dr. Francis Turturro, our team combines advanced dental capabilities, efficient care, and a welcoming environment.</p>
           <div class="final__cta">
-            <a class="btn btn--accent btn--lg" href="#consult-form" data-track="cta">Book Your Free Consultation</a>
+            <a class="btn btn--accent btn--lg" href="#consult-form" data-track="cta" data-form-open>Book Your Free Consultation</a>
             <a class="btn btn--light btn--lg" href="tel:9143502622" data-track="phone" data-location="final"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call (914) 350-2622</a>
           </div>
 
@@ -477,7 +440,7 @@
             <source type="image/webp" srcset="../assets/img/office-480.webp 480w, ../assets/img/office-800.webp 800w" sizes="(min-width: 960px) 420px, 100vw">
             <img src="../assets/img/office-800.jpg" srcset="../assets/img/office-480.jpg 480w, ../assets/img/office-800.jpg 800w" sizes="(min-width: 960px) 420px, 100vw" width="800" height="533" alt="Entrance to the Hudson Valley Dental Medicine office building at 1983 Crompond Rd, Cortlandt Manor" loading="lazy" decoding="async">
           </picture>
-          <iframe class="map" title="Map to Hudson Valley Dental Medicine, 1983 Crompond Rd #202, Cortlandt Manor, NY 10567" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="https://www.google.com/maps?q=Hudson+Valley+Dental+Medicine%2C+1983+Crompond+Rd+%23202%2C+Cortlandt+Manor%2C+NY+10567&amp;z=15&amp;output=embed"></iframe>
+          <iframe class="map" title="Map to Hudson Valley Dental Medicine, 1983 Crompond Rd #202, Cortlandt Manor, NY 10567" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11990.890265047463!2d-73.90057392596435!3d41.293142129467896!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2c8fddb8f38bb%3A0xedd92132710c267a!2sHudson%20Valley%20Dental%20Medicine!5e0!3m2!1sen!2sus!4v1786109537275!5m2!1sen!2sus"></iframe>
         </div>
       </div>
     </section>
@@ -495,18 +458,92 @@
     <a class="btn btn--outline" href="tel:9143502622" data-track="phone" data-location="sticky">
       <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call Now
     </a>
-    <a class="btn btn--accent" href="#consult-form" data-track="cta">Free Consultation</a>
+    <a class="btn btn--accent" href="#consult-form" data-track="cta" data-form-open>Free Consultation</a>
   </div>
 
-  <!-- Dr. Turturro hello video – loads only when opened -->
-  <dialog class="video-modal" id="videoModal" aria-label="A quick hello from Dr. Francis Turturro">
+  <!-- Video modal (hello video / patient story) – source is set on open, loads only then -->
+  <dialog class="video-modal" id="videoModal" aria-label="Video">
     <button class="video-modal__close" type="button" data-video-close aria-label="Close video">
       <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-close"/></svg>
     </button>
-    <video class="video-modal__el" id="videoEl" playsinline controls preload="none" poster="../assets/img/video-poster-540.jpg" width="540" height="960">
-      <source src="../assets/video/tooth-pain-540.mp4" type="video/mp4">
-    </video>
-    <p class="video-modal__caption"><strong>Dr. Francis Turturro, DDS</strong> · Hudson Valley Dental Medicine</p>
+    <video class="video-modal__el" id="videoEl" playsinline controls preload="none" width="540" height="960"></video>
+    <p class="video-modal__caption" id="videoCaption"></p>
+  </dialog>
+
+  <!-- ===== PRIMARY (ONLY) LEAD FORM – popup opened by every "Book Your Free Consultation" CTA =====
+       INTEGRATION: set data-endpoint to the practice's LeadConnector / GHL inbound webhook
+       (or any POST endpoint) – see README.md. Field names match the approved form:
+       First Name, Last Name, Phone Number, Email, Preferred Appointment Day(s),
+       Preferred Appointment Time(s), Questions / Comments, consent.
+       If the practice prefers the LeadConnector embedded form, replace the <form> with the
+       LeadConnector iframe and keep the surrounding .form-card so the CTAs keep working. -->
+  <dialog class="form-modal" id="consult-form" aria-labelledby="form-title">
+    <div class="form-card">
+      <button class="form-modal__close" type="button" data-form-close aria-label="Close form">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-close"/></svg>
+      </button>
+      <div class="form-card__head">
+        <p class="kicker">Book now</p>
+        <h2 id="form-title">Book Your Free Consultation</h2>
+        <p>Takes less than a minute. Our team confirms your appointment by phone or text.</p>
+      </div>
+      <form class="form" id="consultForm" method="post" action="#" data-endpoint="" novalidate>
+        <div class="form__row">
+          <div class="field">
+            <label for="first_name">First Name <span class="req" aria-hidden="true">*</span></label>
+            <input id="first_name" name="first_name" type="text" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="last_name">Last Name <span class="req" aria-hidden="true">*</span></label>
+            <input id="last_name" name="last_name" type="text" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="field">
+            <label for="phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required>
+          </div>
+        </div>
+        <fieldset class="field field--chips" data-chip-group>
+          <legend>Preferred Appointment Day(s) <span class="req" aria-hidden="true">*</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="preferred_days" value="Monday"><span>Mon</span></label>
+            <label class="chip"><input type="checkbox" name="preferred_days" value="Tuesday"><span>Tue</span></label>
+            <label class="chip"><input type="checkbox" name="preferred_days" value="Thursday"><span>Thu</span></label>
+            <label class="chip"><input type="checkbox" name="preferred_days" value="Friday"><span>Fri</span></label>
+            <label class="chip"><input type="checkbox" name="preferred_days" value="Saturday"><span>Sat</span></label>
+            <label class="chip"><input type="checkbox" name="preferred_days" value="Any day"><span>Any day</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field field--chips" data-chip-group>
+          <legend>Preferred Appointment Time(s) <span class="req" aria-hidden="true">*</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="preferred_times" value="Morning"><span>Morning</span></label>
+            <label class="chip"><input type="checkbox" name="preferred_times" value="Afternoon"><span>Afternoon</span></label>
+            <label class="chip"><input type="checkbox" name="preferred_times" value="Any time"><span>Any time</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="comments">Questions / Comments <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="comments" name="comments" rows="2" required placeholder="What would you like us to know before your visit?"></textarea>
+        </div>
+        <div class="field field--check">
+          <input id="consent" name="consent" type="checkbox" value="yes" required>
+          <label for="consent">I agree to <a href="https://hudsonvalleydentalmedicine.com/privacy-policy/" target="_blank" rel="noopener">terms &amp; conditions</a> provided by the company. By providing my phone number, I agree to receive text messages from the business.</label>
+        </div>
+        <!-- Bot protection: honeypot field + minimum time-to-submit (see js/new-patient.js).
+             To add reCAPTCHA / Turnstile, place the widget here and verify the token at the endpoint. -->
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="form_loaded_at" value="">
+        <button class="btn btn--accent btn--lg btn--block" type="submit">Book My Free Consultation</button>
+        <p class="form__note"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-lock"/></svg>New patients only. We'll reach out by phone or text to confirm.</p>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
   </dialog>
 
   <!-- Inline icon sprite (no icon library) -->
@@ -535,6 +572,6 @@
     <symbol id="i-general" viewBox="0 0 24 24"><path d="M12 3l7 2.5v5.5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V5.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8.5v6M9 11.5h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
   </svg>
 
-  <script src="../js/new-patient.js?v=1" defer></script>
+  <script src="../js/new-patient.js?v=2" defer></script>
 </body>
 </html>

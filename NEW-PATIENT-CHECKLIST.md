@@ -2,8 +2,10 @@
 
 Page: `new-patient/index.html` → published at `https://malik539.github.io/hudson/new-patient/`
 Source of truth: the approved MD export of the live page (`smilehub.hudsonvalleydentalmedicine.com/new-patient-834976`, supplied 2026-11-05).
-The live page itself was blocked by the build environment's network policy, so its form embed, tracking tags, images,
-video and map could not be inspected; the integration pattern from the emergency page in this repo was reused instead.
+The live page was inspected on 2026-11-05 once its host was allowed: it is a GoHighLevel funnel page with a native
+GHL form (Cloudflare Turnstile bot protection), GTM container GTM-KD6LN4MQ, an Elfsight Google Reviews widget, two
+GHL-hosted videos and two before/after images. All of that is reflected here except the Elfsight widget (verbatim
+static reviews are used instead) and the GHL form itself (see the Form row).
 
 ## Verified / approved – used verbatim
 
@@ -25,9 +27,12 @@ video and map could not be inspected; the integration pattern from the emergency
 |----------|--------------------|-----|
 | Hero rating, doctor photo caption, reviews badge | **5.0 · 200+ Google Reviews** | Approved wording per the brief. The emergency page uses 4.9 · 220 (from the client's own Google screenshots). Decide which figure both pages should carry. |
 | Doctor bio + credential | "practicing in the Bronxville community for more than 12 years" / "12+ years serving Bronxville & Yorktown families" | Kept verbatim as instructed. Flag for content review: it reads inconsistently next to the Cortlandt Manor positioning. |
-| Hero doctor element + doctor section | "A quick hello · 14 sec" video | The source mentions a 60-second hello video, which was not supplied. The approved HVDM clip already in this repo is used instead; it says "At Hudson Valley Dental Medicine, we make your dental care comfortable and easy. Call us today to schedule your visit." Swap `assets/video/` + poster when the 60-second video arrives. |
-| Patient stories | Six verbatim Google reviews from the client's screenshots (same set as the emergency page) | The MD only contains one review ("Nic Cucchiarella – All good."), omitted as too thin. The "Angel" patient story video was not supplied, so no video story is shown. |
-| Proven results (before / after) | Block exists but is **hidden** (`<div class="results" hidden>`) | Before/after images were not supplied. Add the two images, fill `src`/`alt`, remove `hidden`; the disclaimer is inside the block and becomes visible with it. |
+| Hero video + doctor section "Watch a quick hello" | Dr. Turturro's hello video from the live page (21 s, re-encoded to 540p H.264; poster is the frame at 3.2 s) | Supplied 2026-11-05 from the GHL CDN. The source label says "60 second hello" but the clip is 21 s, so the page says "A quick hello before your visit · 0:21". |
+| Patient stories | Angel's video story (25 s, re-encoded from the supplied .mov to H.264) + six verbatim Google reviews from the client's screenshots (same set as the emergency page) | The MD only contains one text review ("Nic Cucchiarella – All good."), omitted as too thin. The story card's one-line intro ("Hear from Angel, one of the families who trust…") is drafted; the video's own words were not transcribed. |
+| Proven results (before / after) | The two before/after images from the live page, with the approved disclaimer | Downloaded from the live page's media library; alt text drafted. |
+| Form | Popup `<dialog>` opened by every CTA, the skip link and the sticky bar; still one form only | Requested 2026-11-05. The live page uses a native GHL form with Cloudflare Turnstile; this page uses honeypot + timing until a Turnstile key or the GHL embed is supplied. |
+| Tracking | GTM-KD6LN4MQ active in head and body | The container the live smilehub page loads. Conversion tags/triggers for `form_submit` and `phone_click` must be added inside GTM. |
+| Map | The live page's exact Google Maps embed URL | Replaces the generic `maps?q=` embed. |
 | iTero feature | Illustration (inline SVG) | No iTero device/screenshot asset was supplied. Replace `.itero__visual` with the approved image when available. |
 | Hero fine print + form note | "New patients only. Your complimentary first visit is a consultation and personalized treatment plan." / "New patients only. We'll reach out by phone or text to confirm." | Added so "Your first visit is on us" cannot be read as free treatment. |
 | Form: Preferred Day(s) / Time(s) | Multi-select chips (Mon · Tue · Thu · Fri · Sat · Any day / Morning · Afternoon · Any time), sent as comma-separated text | The MD lists the fields but not their input type. Chips are faster on mobile; swap for text inputs if the CRM field expects free text. |
