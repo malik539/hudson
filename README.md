@@ -1,8 +1,70 @@
-# Hudson Valley Dental Medicine – Emergency Dental Treatment landing page
+# Hudson Valley Dental Medicine – PPC landing pages
+
+Two static landing pages (HTML/CSS/JS, no framework, no external libraries) for Hudson Valley
+Dental Medicine in Cortlandt Manor, NY:
+
+| Page | Path | Campaign | Phone |
+|------|------|----------|-------|
+| Emergency Dental Treatment | `/` (`index.html`) | Emergency Google Ads campaign | (914) 809-8561 |
+| New Patient – Free Consultation | `/new-patient/` (`new-patient/index.html`) | New Patient Google Ads campaign | (914) 350-2622 |
+
+Each page has its own stylesheet and script so one can change without touching the other; fonts and
+images in `assets/` are shared.
+
+---
+
+## New Patient – Free Consultation page (`new-patient/`)
+
+Offer: **"Your first visit is on us."** = a complimentary new-patient consultation and personalized
+treatment plan (never free treatment). Goal: free-consultation form submissions and calls to
+**(914) 350-2622** (`tel:9143502622`).
+
+```
+new-patient/index.html   page (6 sections + top bar, header, mobile sticky CTA, hello-video modal)
+css/new-patient.css      warm/premium brand styling (Poppins, #007dc3 blue, #0fd8b0 teal, navy)
+js/new-patient.js        sticky CTA, reviews ticker, video modal, form submit, dataLayer events (≈9 KB)
+NEW-PATIENT-CHECKLIST.md every string / decision that must be verified against the source page
+```
+
+| # | Section | Conversion purpose |
+|---|---------|--------------------|
+| 0 | "Now Welcoming New Patients" bar + compact header | Phone + Book Your Free Consultation |
+| 1 | Hero (offer, clarification, 5.0 · 200+ reviews, CTAs, trust points, Dr. Turturro hello video) + the **only** lead form (`#consult-form`) | Explain the offer in 5 seconds and capture the lead |
+| 2 | Why Choose Hudson Valley Dental Medicine (3×2 benefits) + iTero feature | Differentiate; CTA |
+| 3 | Our Comprehensive Dental Services (5 compact cards) | Show the practice is a long-term dental home |
+| 4 | Meet Dr. Francis Turturro (photo, bio, credentials) | Doctor credibility; CTA |
+| 5 | Patient stories (reviews ticker) + before/after (hidden until assets arrive) + FAQ accordion | Social proof and objection handling |
+| 6 | Final CTA + address, hours, map, directions | Make booking or navigating effortless |
+| – | Mobile sticky bar (Call Now / Free Consultation) | Always-available conversion on phones; hides while the form is on screen |
+
+### Connecting the form
+
+Set `data-endpoint` on `<form id="consultForm">` to the practice's LeadConnector / GHL inbound webhook
+(or any POST endpoint). Payload (JSON): `first_name`, `last_name`, `phone`, `email`, `preferred_days`
+("Monday, Thursday"), `preferred_times` ("Morning"), `comments`, `consent`, `source`, `page_url`, plus
+`gclid` / `utm_*` when present on the landing URL. Bot protection: honeypot field + submissions faster
+than 2.5 s are dropped silently. Until an endpoint is set the form shows the thank-you state and fires
+`form_submit` but sends nothing. To use the LeadConnector embedded form instead, replace the `<form>` with
+the iframe and keep the surrounding `.form-card` so the `#consult-form` links keep working.
+
+### Tracking
+
+Paste the GTM container into the marked slots (head and body). dataLayer events (mirrored to `gtag`):
+`phone_click` {link_location, phone_number}, `cta_click` {cta_text}, `form_start` {form_id},
+`form_submit` {form_id, preferred_days, preferred_times}, `directions_click`, `video_play` {video_title}.
+Bump the `?v=` on `css/new-patient.css` and `js/new-patient.js` when you change them.
+
+### Pending assets (see NEW-PATIENT-CHECKLIST.md)
+
+60-second Dr. Turturro hello video (the 14-second HVDM clip is used meanwhile), "Angel" patient story
+video, before/after images (block ships hidden), iTero image (illustration used meanwhile).
+
+---
+
+## Emergency Dental Treatment page (`/`)
 
 High-intent PPC landing page for **Emergency Dental Treatment** in Cortlandt Manor, NY.
-Static HTML/CSS/JS, no framework, no external libraries. Goal: phone calls to
-**(914) 809-8561** and emergency appointment requests.
+Goal: phone calls to **(914) 809-8561** and emergency appointment requests.
 
 ```
 index.html            page (7 sections + header, status bar, mobile sticky CTA)
